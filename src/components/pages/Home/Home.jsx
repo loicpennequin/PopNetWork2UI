@@ -10,7 +10,7 @@ import { subscribe }  from 'react-contextual';
 import store          from '../../../store/store.js';
 
 import UserModel      from '../../../resources/models/UserModel.js';
-import Form           from '../../shared/Form/Form.jsx';
+import Form           from '../../common/Form/Form.jsx';
 
 const fields =  [
     {label: 'Nom', name: 'username', type: 'text'},

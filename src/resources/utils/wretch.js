@@ -1,10 +1,3 @@
-/**
- * wretch configuration.
- *
- * @author jun.thong@me.com (Jun Thong)
- */
-
-
 import wretch           from 'wretch';
 import { dedupe }       from 'wretch-middlewares';
 import constants        from './constants.js';
@@ -25,9 +18,7 @@ let w = wretch(constants.API_URL + '/api')
             // TODO
             return { error : 401 };
         })
-        .error( 422, async error => {
-            return { error : Object.values(error)[0] }
-        })
+        .error( 422, error => JSON.parse(Object.values(error)[0]))
         .json()
     );
 

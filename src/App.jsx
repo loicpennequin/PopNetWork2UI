@@ -11,8 +11,8 @@ import store                            from './store/store.js';
 import { Switch, Route }                from 'react-router-dom';
 import api                              from  './resources/utils/wretch.js';
 
-import MainNav                          from './components/shared/MainNav/MainNav.jsx';
-import { PrivateRoute, LoggedOutRoute } from './components/shared/Routes/routes.jsx';
+import MainNav                          from './components/common/MainNav/MainNav.jsx';
+import { PrivateRoute, LoggedOutRoute } from './components/common/Routes/routes.jsx';
 import Home                             from './components/pages/Home/Home.jsx';
 import Dashboard                        from './components/pages/Dashboard/Dashboard.jsx';
 
