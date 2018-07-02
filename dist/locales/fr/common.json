@@ -1,3 +1,7 @@
 {
-    "Soon...": "Bientôt..."
+    "app title": "Pop Network",
+    "you are logged in": "Vous êtes actuellement connecté.",
+    "you are not logged in": "Vous n'êtes actuellement pas connecté.",
+    "login": "Connexion",
+    "logout": "Deconnexion"
 }

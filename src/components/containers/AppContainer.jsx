@@ -4,15 +4,17 @@
  * @author Daria <lo.pennequin@gmail.com>
  */
 
-import React             from 'react';
+import React                        from 'react';
 
-import { Provider }      from 'react-contextual';
-import store             from '../../store/store.js';
+import { BrowserRouter as Router}   from 'react-router-dom';
 
-import {I18nextProvider} from 'react-i18next';
-import i18n              from '../../resources/services/i18n.js';
+import { Provider }                 from 'react-contextual';
+import store                        from '../../store/store.js';
 
-import App               from '../../App.jsx';
+import {I18nextProvider}            from 'react-i18next';
+import i18n                         from '../../resources/utils/i18n.js';
+
+import App                          from '../../App.jsx';
 
 class AppContainer extends React.Component {
     constructor(props){
@@ -23,7 +25,9 @@ class AppContainer extends React.Component {
         return (
             <Provider store={store}>
                 <I18nextProvider i18n={ i18n }>
-                    <App />
+                    <Router>
+                        <App />
+                    </Router>
                 </I18nextProvider>
             </Provider>
         )

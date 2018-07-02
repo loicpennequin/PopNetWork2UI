@@ -1,8 +1,14 @@
-import { createStore    } from 'react-contextual'
+import { createStore } from 'react-contextual'
+import authActions     from './actions/authActions.js';
 
 let store = createStore({
-    initialState: {},
-    actions: {}
+    initialState: {
+        authenticated : false
+    },
+    actions: Object.assign(
+        {},
+        authActions
+    )
 });
 
 export default store;

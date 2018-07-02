@@ -4,28 +4,43 @@
  * @author Daria <lo.pennequin@gmail.com>
  */
 
-import React    from 'react';
-import { translate } from 'react-i18next';
+import React                            from 'react';
+import { subscribe }                    from 'react-contextual';
+import store                            from './store/store.js';
 
-@translate()
+import { Switch, Route }                from 'react-router-dom';
+import api                              from  './resources/utils/wretch.js';
+
+import MainNav                          from './components/shared/MainNav/MainNav.jsx';
+import { PrivateRoute, LoggedOutRoute } from './components/shared/Routes/routes.jsx';
+import Home                             from './components/pages/Home/Home.jsx';
+import Dashboard                        from './components/pages/Dashboard/Dashboard.jsx';
+
+@subscribe(store, s => ({
+    authenticated: s.authenticated,
+    login: s.actions.login
+}))
 class App extends React.Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            message: "Soon"
-        };
+    componentDidMount(){
+        this.verifyAuth();
     }
 
-    // async componentDidMount(){
-    //     const rawData = await fetch('http://localhost:8000/api/test');
-    //     const { message } = await rawData.json();
-    //     this.setState({ message });
-    // }
+    async verifyAuth(){
+        let { error } = await api.get('/authenticated');
+        if ( !error ){
+            this.props.actions.login();
+        }
+    }
 
     render() {
-        const { t } = this.props;
         return (
-            <h1>{t(this.state.message)}</h1>
+            <React.Fragment>
+                <MainNav />
+                <Switch>
+                    <LoggedOutRoute exact path="/" component={Home}/>
+                    <PrivateRoute path="/dashboard" component={Dashboard}/>
+                </Switch>
+            </React.Fragment>
         )
     }
 }
