@@ -27,9 +27,19 @@ module.exports = {
             cache: {},
             packageCache: {},
             transform: [
-                ['babelify', {
-                    presets: ["env", "react"]
-                }]
+                [
+                    'babelify',
+                    {
+                        presets: ["env", "react"],
+                        plugins: [
+                            "transform-class-properties",
+                            "transform-decorators",
+                            "transform-react-constant-elements",
+                            "transform-react-inline-elements",
+                            "transform-decorators-legacy"
+                        ]
+                    }
+                ]
             ]
         }
     }

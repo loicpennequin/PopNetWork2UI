@@ -13,8 +13,23 @@ const notifier      = require('node-notifier');
 const path          = require('path');
 const cfg           = require(path.join(__dirname, '../config.js'));
 const logger        = require(path.join(__dirname, '../log.js'));
-const opts          = cfg.bundle.options;
+// const opts          = cfg.bundle.options;
 const browserSync   = require(path.join(__dirname, 'serve.js'));
+
+const opts = {
+    entries: cfg.paths.js.src,
+    debug: true,
+    cache: {},
+    transform: [babelify.configure({
+        presets: ["env", "react"],
+        plugins: [
+            "transform-class-properties",
+            "transform-react-constant-elements",
+            "transform-react-inline-elements",
+            "transform-decorators-legacy"
+        ]
+    })]
+};
 
 let _onError = (err) => {
     logger.error(err.message);
@@ -27,9 +42,7 @@ let _onError = (err) => {
 }
 
 let _bundleJS = (watch) => {
-    let bundler = watch ?
-        watchify(browserify(cfg.paths.js.src, opts)) :
-        browserify(cfg.paths.js.src, opts);
+    let bundler = watch ? watchify(browserify(opts)) : browserify(opts);
 
     let rebundle = () =>
         bundler
