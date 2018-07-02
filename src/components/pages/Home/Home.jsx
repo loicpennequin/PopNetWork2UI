@@ -10,13 +10,7 @@ import { subscribe }  from 'react-contextual';
 import store          from '../../../store/store.js';
 
 import UserModel      from '../../../resources/models/UserModel.js';
-import Form           from '../../common/Form/Form.jsx';
-
-const fields =  [
-    {label: 'Nom', name: 'username', type: 'text'},
-    {label: 'Adresse email', name: "email", type: 'email'},
-    {label: 'password', name: "password", type: 'password', placeholder: "6 caractères minimum"},
-];
+import RegisterForm   from './RegisterForm/RegisterForm.jsx';
 
 @translate()
 class Home extends React.Component {
@@ -29,7 +23,7 @@ class Home extends React.Component {
         return (
             <React.Fragment>
                 <h1>This is the home</h1>
-                <Form name="RegisterForm" fields={fields} action={UserModel.create}></Form>
+                <RegisterForm />
             </React.Fragment>
         )
     }

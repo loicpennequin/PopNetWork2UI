@@ -8,6 +8,7 @@ import React                     from 'react';
 import api                       from  '../../../resources/utils/wretch.js';
 import { getDefaultInputValue }  from '../../../resources/utils/helpers.js';
 
+import Input                     from '../Input/Input.jsx';
 class Form extends React.Component {
     constructor(props) {
         super(props);
@@ -35,25 +36,20 @@ class Form extends React.Component {
     async onSubmit(e) {
         e.preventDefault();
         let response = await this.props.action(this.state.values)
-        console.log(response);
     }
 
     render() {
         const inputs = this.props.fields.map(field =>
             <React.Fragment>
-                <label>{field.label}</label>
-                <input key={`${this.props.name}-${field.name}`}
-                       name={field.name}
+                <Input key={`${this.props.name}-${field.name}`}
+                       field={field}
                        value={this.state.values[field.name]}
-                       type={field.type}
-                       options={field.options}
-                       placeholder={field.placeholder}
                        onChange={e => this.onFieldChange(e)}
                        />
             </React.Fragment>
         );
         return (
-            <form onSubmit={e => this.onSubmit(e)}>
+            <form onSubmit={e => this.onSubmit(e)} noValidate>
                 {inputs}
                 <input type="submit" value="submit" />
             </form>

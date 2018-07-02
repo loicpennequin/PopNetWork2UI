@@ -9,6 +9,13 @@ const getDefaultInputValue = type => {
     }
 }
 
+const aggregateErrors = (errs, fields) => fields.map(field => {
+    let errors = errs.filter(error => error.param === field.name)
+                      .map(error => error.msg);
+    return Object.assign(field, { errors });
+})
+
 export {
-    getDefaultInputValue
+    getDefaultInputValue,
+    aggregateErrors
 }
