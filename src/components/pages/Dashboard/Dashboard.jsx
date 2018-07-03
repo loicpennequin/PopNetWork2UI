@@ -9,7 +9,7 @@ import { translate }  from 'react-i18next';
 import { subscribe }  from 'react-contextual';
 import store          from '../../../store/store.js';
 
-import api            from  '../../../resources/utils/wretch.js';
+import UserModel      from  '../../../resources/models/UserModel.js';
 
 @translate()
 class Dashboard extends React.Component {

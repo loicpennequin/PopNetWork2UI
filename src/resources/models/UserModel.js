@@ -9,4 +9,13 @@ export default class UserModel {
             return err;
         }
     }
+
+    static async getSelf(){
+        try {
+            let response = await api.get('/me');
+            return response;
+        } catch (err) {
+            return err;
+        }
+    }
 }

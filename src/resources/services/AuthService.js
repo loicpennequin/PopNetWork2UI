@@ -6,13 +6,15 @@ export default class Authservice{
         let { error } = await api.get('/authenticated');
         if ( !error ){
             store.actions.login();
+            store.actions.getCurrentUser();
         }
     }
 
     static async login(body){
         let response = await api.post('/login', body);
-        if ( response.token ) {
+        if ( response.userId ) {
             store.actions.login();
+            store.actions.getCurrentUser();
         }
     }
 

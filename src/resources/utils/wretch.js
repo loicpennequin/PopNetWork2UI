@@ -1,6 +1,7 @@
 import wretch           from 'wretch';
 import { dedupe }       from 'wretch-middlewares';
 import constants        from './constants.js';
+import { momentizeObj } from './helpers.js';
 
 let w = wretch(constants.API_URL + '/api')
     .middlewares([
@@ -23,10 +24,11 @@ let w = wretch(constants.API_URL + '/api')
             if ( json.token ) {
                 localStorage.setItem('token', json.token);
             }
-            if ( json.uid ) {
+            if ( json.userId ) {
                 localStorage.setItem('uid', json.token);
             }
-            return json;
+            delete json.token;
+            return momentizeObj(json);
         })
     );
 

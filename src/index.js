@@ -10,10 +10,6 @@ import React            from "react";
 import ReactDOM         from "react-dom";
 
 import AppContainer     from "./components/containers/AppContainer.jsx";
-import moment           from 'moment';
-import momentLocaleFr   from 'moment/locale/fr';
-
-moment.locale('fr');
 
 window.FontAwesomeConfig = {
     searchPseudoElements: true
