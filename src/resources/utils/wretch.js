@@ -19,7 +19,15 @@ let w = wretch(constants.API_URL + '/api')
             return { error : 401 };
         })
         .error( 422, error => JSON.parse(Object.values(error)[0]))
-        .json()
+        .json( json => {
+            if ( json.token ) {
+                localStorage.setItem('token', json.token);
+            }
+            if ( json.uid ) {
+                localStorage.setItem('uid', json.token);
+            }
+            return json;
+        })
     );
 
 export default {

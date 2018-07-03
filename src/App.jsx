@@ -9,27 +9,18 @@ import { subscribe }                    from 'react-contextual';
 import store                            from './store/store.js';
 
 import { Switch, Route }                from 'react-router-dom';
-import api                              from  './resources/utils/wretch.js';
+
+import AuthService                      from './resources/services/AuthService.js';
 
 import MainNav                          from './components/common/MainNav/MainNav.jsx';
 import { PrivateRoute, LoggedOutRoute } from './components/common/Routes/routes.jsx';
 import Home                             from './components/pages/Home/Home.jsx';
 import Dashboard                        from './components/pages/Dashboard/Dashboard.jsx';
 
-@subscribe(store, s => ({
-    authenticated: s.authenticated,
-    login: s.actions.login
-}))
+@subscribe(store, s => ({ authenticated: s.authenticated}))
 class App extends React.Component {
     componentDidMount(){
-        this.verifyAuth();
-    }
-
-    async verifyAuth(){
-        let { error } = await api.get('/authenticated');
-        if ( !error ){
-            this.props.actions.login();
-        }
+        AuthService.verifyAuth()
     }
 
     render() {

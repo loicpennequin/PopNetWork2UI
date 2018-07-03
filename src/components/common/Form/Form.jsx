@@ -49,7 +49,7 @@ class Form extends React.Component {
             </React.Fragment>
         );
         return (
-            <form onSubmit={e => this.onSubmit(e)} noValidate autoComplete="off">
+            <form onSubmit={e => this.onSubmit(e)} noValidate autoComplete="off" className={this.props.className}>
                 {inputs}
                 <input className="button" type="submit" value={this.props.submitMessage || "Submit"} />
             </form>

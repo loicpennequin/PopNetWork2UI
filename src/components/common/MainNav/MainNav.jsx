@@ -10,14 +10,18 @@ import { subscribe }     from 'react-contextual';
 import store             from '../../../store/store.js';
 import i18next           from '../../../resources/utils/i18n.js';
 
-import api               from  '../../../resources/utils/wretch.js'
+import api               from '../../../resources/utils/wretch.js';
+import AuthService       from '../../../resources/services/AuthService.js';
+
+import Form              from '../Form/Form.jsx';
+
+const loginFormFields = [
+    {label: 'username', name: 'username', type: 'text'},
+    {label: 'password', name: "password", type: 'password'},
+];
 
 @translate()
-@subscribe(store, s => ({
-    authenticated: s.authenticated,
-    login: s.actions.login,
-    logout: s.actions.logout,
-}))
+@subscribe(store, s => ({authenticated: s.authenticated}))
 class MainNav extends React.Component {
     render() {
         const { t } = this.props;
@@ -28,15 +32,23 @@ class MainNav extends React.Component {
                         <p>{t('app title')}</p>
                     </div>
                     <div className="navbar-right">
-                        {this.props.authenticated
-                            ? <button className="button is-nude" onClick={this.props.logout}>{t('logout')}</button>
-                            : <button className="button is-nude" onClick={this.props.login}>{t('login')}</button>}
+                        {
+                            this.props.authenticated
+                            ? <button className="button is-nude" onClick={AuthService.logout}>{t('logout')}</button>
+                            : <Form name="LoginForm"
+                                fields={loginFormFields}
+                                action={AuthService.login}
+                                submitMessage={t('login')}
+                                className="form-horizontal"/>
+                        }
+                        <div className="action-bar">
                             <button className="button is-nude" onClick={() => i18next.changeLanguage('fr')}>
                                 <span className="flag-icon flag-icon-fr flag-icon-squared"></span>
                             </button>
                             <button className="button is-nude" onClick={() => i18next.changeLanguage('en')}>
                                 <span className="flag-icon flag-icon-gb flag-icon-squared"></span>
                             </button>
+                        </div>
                     </div>
                 </div>
             </nav>

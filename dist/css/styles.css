@@ -297,7 +297,7 @@ a, a:hover, a:visited {
 
 .container {
   margin: 0 auto;
-  max-width: 1100px; }
+  max-width: 1200px; }
   @media screen and (max-width: 580px) {
     .container {
       max-width: none;
@@ -409,7 +409,7 @@ a, a:hover, a:visited {
 
 .navbar {
   font-size: 1.25em;
-  height: 50px; }
+  height: 60px; }
   @media screen and (max-width: 580px) {
     .navbar {
       padding-right: 8px;
@@ -539,7 +539,7 @@ a, a:hover, a:visited {
   background: linear-gradient(130deg, #4fc953, #5ae0f2);
   color: white;
   padding: 32px;
-  height: calc(100vh - 50px); }
+  height: calc(100vh - 60px); }
 
 .register-form {
   width: 50%;
@@ -555,7 +555,7 @@ html {
       font-size: 18px; } }
 
 #app {
-  padding-top: 50px;
+  padding-top: 60px;
   min-height: 100vh;
   font-family: "Open Sans", Helvetica, Arial, sans serif;
   font-size: 0.85rem;
