@@ -1,4 +1,4 @@
-    import wretch           from 'wretch';
+import wretch           from 'wretch';
 import { dedupe }       from 'wretch-middlewares';
 import constants        from './constants.js';
 

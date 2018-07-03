@@ -51,7 +51,7 @@ class Form extends React.Component {
         return (
             <form onSubmit={e => this.onSubmit(e)} noValidate autoComplete="off">
                 {inputs}
-                <input className="button" type="submit" value="submit" />
+                <input className="button" type="submit" value={this.props.submitMessage || "Submit"} />
             </form>
         )
     }

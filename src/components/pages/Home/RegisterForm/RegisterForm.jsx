@@ -42,16 +42,17 @@ class Home extends React.Component {
     render() {
         const { t } = this.props;
         return (
-            <React.Fragment>
+            <div className="register-form">
                 <Form name="RegisterForm"
                     fields={this.state.fields}
-                    action={this.register}/>
+                    action={this.register}
+                    submitMessage={t('register')}/>
                 {
                     this.state.registrationSuccess
                     ? <p>{t('registration successful')}</p>
                     : null
                 }
-            </React.Fragment>
+            </div>
         )
     }
 }

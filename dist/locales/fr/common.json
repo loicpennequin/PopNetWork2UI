@@ -1,6 +1,6 @@
 {
     "app title": "Pop Network",
-    "catchphrase": "Build apps. Share memes",
+    "catchphrase": "Build apps. Share memes.",
     "registration successful": "Inscription réussie !",
     "you are logged in": "Vous êtes actuellement connecté.",
     "you are not logged in": "Vous n'êtes actuellement pas connecté.",
@@ -9,5 +9,6 @@
     "username": "Nom",
     "email": "Adresse email",
     "password": "Mot de passe",
-    "6 caractères minimum": "6 caractères minimum"
+    "6 caractères minimum": "6 caractères minimum",
+    "register": "S'inscrire"
 }

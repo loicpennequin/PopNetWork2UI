@@ -541,6 +541,10 @@ a, a:hover, a:visited {
   padding: 32px;
   height: calc(100vh - 50px); }
 
+.register-form {
+  width: 50%;
+  min-width: 200px; }
+
 html {
   font-size: 12px; }
   @media screen and (min-width: 350px) {
