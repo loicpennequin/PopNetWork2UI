@@ -1,0 +1,25 @@
+.main-nav_menu
+    position: absolute
+    width: $menu-width + $spacing-2 * 2
+    background-color: $black
+    padding: $spacing-2
+    left: $spacing-3
+    box-shadow: $boxshadow-2
+    &_item
+        +gradient-vertical($white, $grey)
+        height: ($menu-width / 4) - $spacing-1 * 2
+        margin: $spacing-1
+        padding: $spacing-1
+        display: flex
+        border: $border-size-1 $lightgrey
+        border-radius: $border-radius-1
+        overflow: hidden
+        text-transform: uppercase
+        align-items: flex-end
+        word-break: break-all
+        font-size: $font-size-1
+        cursor: pointer
+        &_title
+            background-color: transparentize($black, 0.5)
+            padding: $spacing-1
+            color: $white

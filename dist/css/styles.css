@@ -314,7 +314,6 @@ a, a:hover, a:visited {
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   background-color: white;
   border: none;
-  margin: 4px;
   font-size: 1em;
   cursor: pointer;
   transition: all 0.2s; }
@@ -408,8 +407,8 @@ a, a:hover, a:visited {
   height: 100%; }
 
 .navbar {
-  font-size: 1.25em;
-  height: 60px; }
+  font-size: 1em;
+  height: 50px; }
   @media screen and (max-width: 580px) {
     .navbar {
       padding-right: 8px;
@@ -470,8 +469,8 @@ a, a:hover, a:visited {
     margin-right: 8px; }
   .form-horizontal .form-field .label {
     font-size: 0.75em; }
-  .form-horizontal .form-field .input[type="submit"] {
-    margin-top: 0.3em; }
+  .form-horizontal .form-field .input {
+    padding: 4px; }
 
 .heading {
   margin-bottom: 4px;
@@ -539,11 +538,37 @@ a, a:hover, a:visited {
   background: linear-gradient(130deg, #4fc953, #5ae0f2);
   color: white;
   padding: 32px;
-  height: calc(100vh - 60px); }
+  height: calc(100vh - 50px); }
 
 .register-form {
   width: 50%;
   min-width: 200px; }
+
+.main-nav_menu {
+  position: absolute;
+  width: 416px;
+  background-color: #666666;
+  padding: 8px;
+  left: 16px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); }
+  .main-nav_menu_item {
+    background: linear-gradient(white, #cccccc);
+    height: 92px;
+    margin: 4px;
+    padding: 4px;
+    display: flex;
+    border: solid 1px #e6e6e6;
+    border-radius: 4px;
+    overflow: hidden;
+    text-transform: uppercase;
+    align-items: flex-end;
+    word-break: break-all;
+    font-size: 0.75em;
+    cursor: pointer; }
+    .main-nav_menu_item_title {
+      background-color: rgba(102, 102, 102, 0.5);
+      padding: 4px;
+      color: white; }
 
 html {
   font-size: 12px; }
@@ -555,7 +580,7 @@ html {
       font-size: 18px; } }
 
 #app {
-  padding-top: 60px;
+  padding-top: 50px;
   min-height: 100vh;
   font-family: "Open Sans", Helvetica, Arial, sans serif;
   font-size: 0.85rem;
