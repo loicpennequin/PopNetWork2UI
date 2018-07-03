@@ -7,38 +7,50 @@
 import React             from 'react';
 import { translate }     from 'react-i18next';
 import { subscribe }     from 'react-contextual';
-import { NavLink }          from 'react-router-dom';
+import { NavLink }       from 'react-router-dom';
 import store             from '../../../../store/store.js';
 import i18next           from '../../../../resources/utils/i18n.js';
 
 import api               from '../../../../resources/utils/wretch.js';
 import constants         from '../../../../resources/utils/constants.js';
 
+import OnOutsideClick    from '../../OnOutsideClick/OnOutsideClick.jsx';
 
-@translate()
+@translate(['common', 'menu'])
 @subscribe(store, s => ({
     menu: s.menu,
     toggle: s.actions.toggleMenu
 }))
 class MainNavMenu extends React.Component {
+    constructor(props){
+        super(props);
+
+        this.container = React.createRef();
+    }
+
     render() {
         const { t } = this.props;
 
         return (
-            <div className="main-nav_menu grid is-4-columns">
-                { this.props.menu.map(menuItem =>
-                        <NavLink to={menuItem.path}
-                                 className="main-nav_menu_item"
-                                 activeClassName="active"
-                                 onClick={this.props.toggle}>
-                            <span className="main-nav_menu_item_title">{t(menuItem.label)}</span>
-                        </NavLink>
+            <OnOutsideClick action={() => this.props.toggle()}
+                            element={this.container}>
+                <div className="main-nav_menu grid is-4-columns" ref={this.container}>
+                    { this.props.menu.map(menuItem =>
+                            <NavLink to={menuItem.path}
+                                     className="main-nav_menu_item"
+                                     activeClassName="active"
+                                     onClick={this.props.toggle}>
+                                <span className="main-nav_menu_item_title">
+                                    {t(`menu:${menuItem.label}`)}
+                                </span>
+                            </NavLink>
+                        )
+                    }
+                </div>
+            </OnOutsideClick>
 
-                    )
-                }
-            </div>
         )
     }
 }
 
-export default MainNavMenu;
+export default MainNavMenu

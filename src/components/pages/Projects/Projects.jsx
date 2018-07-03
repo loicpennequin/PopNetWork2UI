@@ -22,7 +22,7 @@ class Settings extends React.Component {
         const { t } = this.props;
         return (
             <React.Fragment>
-                <h1>This is the settings page</h1>
+                <h1>This is the projects page</h1>
             </React.Fragment>
         )
     }
