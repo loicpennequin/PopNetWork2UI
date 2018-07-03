@@ -7,6 +7,7 @@
 import React             from 'react';
 import { translate }     from 'react-i18next';
 import { subscribe }     from 'react-contextual';
+import { NavLink }          from 'react-router-dom';
 import store             from '../../../../store/store.js';
 import i18next           from '../../../../resources/utils/i18n.js';
 
@@ -16,7 +17,8 @@ import constants         from '../../../../resources/utils/constants.js';
 
 @translate()
 @subscribe(store, s => ({
-    menu: s.menu
+    menu: s.menu,
+    toggle: s.actions.toggleMenu
 }))
 class MainNavMenu extends React.Component {
     render() {
@@ -25,9 +27,12 @@ class MainNavMenu extends React.Component {
         return (
             <div className="main-nav_menu grid is-4-columns">
                 { this.props.menu.map(menuItem =>
-                        <a className="main-nav_menu_item">
-                            <span className="main-nav_menu_item_title">{menuItem}</span>
-                        </a>
+                        <NavLink to={menuItem.path}
+                                 className="main-nav_menu_item"
+                                 activeClassName="active"
+                                 onClick={this.props.toggle}>
+                            <span className="main-nav_menu_item_title">{t(menuItem.label)}</span>
+                        </NavLink>
 
                     )
                 }

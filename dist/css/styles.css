@@ -552,12 +552,12 @@ a, a:hover, a:visited {
   left: 16px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); }
   .main-nav_menu_item {
-    background: linear-gradient(white, #cccccc);
+    background: linear-gradient(white, #bfbfbf);
     height: 92px;
     margin: 4px;
     padding: 4px;
     display: flex;
-    border: solid 1px #e6e6e6;
+    border: solid 1px #d9d9d9;
     border-radius: 4px;
     overflow: hidden;
     text-transform: uppercase;
@@ -569,6 +569,8 @@ a, a:hover, a:visited {
       background-color: rgba(102, 102, 102, 0.5);
       padding: 4px;
       color: white; }
+    .main-nav_menu_item.active {
+      background: linear-gradient(#4fc953, #5ae0f2); }
 
 html {
   font-size: 12px; }
@@ -584,5 +586,5 @@ html {
   min-height: 100vh;
   font-family: "Open Sans", Helvetica, Arial, sans serif;
   font-size: 0.85rem;
-  background-color: #f2f2f2;
+  background-color: #e6e6e6;
   overflow-x: hidden; }
