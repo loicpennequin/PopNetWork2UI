@@ -12,8 +12,8 @@ import UserModel           from '../../../../resources/models/UserModel.js';
 import Form                from '../../../common/Form/Form.jsx';
 
 const fields =  [
-    {label: 'Nom', name: 'username', type: 'text'},
-    {label: 'Adresse email', name: "email", type: 'email'},
+    {label: 'username', name: 'username', type: 'text'},
+    {label: 'email', name: "email", type: 'email'},
     {label: 'password', name: "password", type: 'password', placeholder: "6 caractères minimum"},
 ];
 
@@ -45,8 +45,7 @@ class Home extends React.Component {
             <React.Fragment>
                 <Form name="RegisterForm"
                     fields={this.state.fields}
-                    action={this.register}
-                    />
+                    action={this.register}/>
                 {
                     this.state.registrationSuccess
                     ? <p>{t('registration successful')}</p>

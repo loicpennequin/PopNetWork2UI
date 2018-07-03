@@ -1,5 +1,13 @@
 {
-    "Soon": "Coming Soon...",
-    "you are logged in": "You are currently logged in",
-    "you are not logged in": "You are currently not logged in"
+    "app title": "Pop Network",
+    "catchphrase": "Build apps. Share memes",
+    "registration successful": "Registration successful !",
+    "you are logged in": "You are currently logged in.",
+    "you are not logged in": "You aren't currently logged in.",
+    "login": "Login",
+    "logout": "Logout",
+    "username": "Name",
+    "email": "Email",
+    "password": "Password",
+    "6 caractères minimum": "at least 6 characters"
 }
