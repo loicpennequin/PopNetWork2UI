@@ -1,0 +1,44 @@
+/*============================
+    Main sass file.
+    Import all other files and sets up general styling for the app.
+    @author Daria <lo.pennequin@gmail.com>
+    ==========================*/
+
+//UTILITIES
+@import "utils/reset.sass"
+@import "utils/color.scss"
+@import "utils/variables.sass"
+@import "utils/typography.scss"
+@import "utils/helpers.sass"
+
+//LAYOUT
+@import "layout/flex.sass"
+@import "layout/grid.sass"
+@import "layout/containers.sass"
+
+//SASS ELEMENTS
+@import "elements/buttons.sass"
+@import "elements/navbar.sass"
+@import "elements/forms.sass"
+@import "elements/headings.sass"
+@import "elements/inputs.sass"
+@import "elements/card.sass"
+@import "elements/actionbar.sass"
+
+//APP PAGES
+@import "pages/home.sass"
+
+//REACT COMPONENTS
+
+//APP GLOBAL STYLES
+
+html
+    +fluid-typo($min_width, $max_width, $min_font, $max_font)
+
+#app
+    padding-top: $navbar-height
+    min-height: 100vh
+    font-family: $font-primary
+    font-size: 0.85rem
+    background-color: $background
+    overflow-x: hidden

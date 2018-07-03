@@ -1,0 +1,31 @@
+.form-field
+    padding: $spacing-1
+    position: relative
+    &:not(:last-child)
+        margin-bottom: $spacing-1
+    .input, .label
+        display: block
+        width: 100%
+        &.file
+            width: 120px
+    .label
+        margin-bottom: $spacing-1
+        &::first-letter
+            text-transform: uppercase
+    span
+        position: absolute
+        bottom: $spacing-1
+        left: $spacing-1
+        transform: translate(50%, -50%)
+
+.form-horizontal
+    display: flex
+    flex-direction: row
+    align-items: center
+    .form-field
+        &:not(:last-child)
+            margin-right: $spacing-2
+        .label
+            font-size: $font-size-1
+        .input[type="submit"]
+            margin-top: 0.3em

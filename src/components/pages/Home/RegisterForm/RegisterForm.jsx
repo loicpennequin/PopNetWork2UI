@@ -6,7 +6,6 @@
 
 import React               from 'react';
 import { translate }       from 'react-i18next';
-import store               from '../../../../store/store.js';
 
 import { aggregateErrors } from '../../../../resources/utils/helpers.js';
 import UserModel           from '../../../../resources/models/UserModel.js';
@@ -45,9 +44,9 @@ class Home extends React.Component {
         return (
             <React.Fragment>
                 <Form name="RegisterForm"
-                      fields={this.state.fields}
-                      action={this.register}
-                />
+                    fields={this.state.fields}
+                    action={this.register}
+                    />
                 {
                     this.state.registrationSuccess
                     ? <p>{t('registration successful')}</p>

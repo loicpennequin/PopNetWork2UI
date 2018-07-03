@@ -1,0 +1,34 @@
+/*============================
+    Flexbox helper classes.
+    @author Daria <lo.pennequin@gmail.com>
+    ==========================*/
+
+.flex
+    display: flex
+    &.rows
+        flex-direction: column
+        flex-wrap: wrap
+    &.columns
+        flex-direction: row
+        flex-wrap: wrap
+        &.center
+            justify-content: center
+        &.spread
+            justify-content: space-around
+    &.centered
+        justify-content: center
+        align-items: center
+    .push-right
+        text-align: inherit
+        margin-left: auto
+    .push-left
+        text-align: inherit
+        margin-right: auto
+    .push-top
+        text-align: inherit
+        margin-bottom: auto
+    .push-bottom
+        text-align: inherit
+        margin-top: auto
+    .fill
+        flex-grow: 1

@@ -35,9 +35,10 @@ class Input extends React.Component {
             : null;
 
         return (
-            <div>
-                <label>{t(this.props.field.label)}</label>
-                <input name={this.props.field.name}
+            <div className="form-field">
+                <label className="label">{t(this.props.field.label)}</label>
+                <input className="input"
+                       name={this.props.field.name}
                        value={this.props.value}
                        type={this.props.field.type}
                        options={this.props.field.options}

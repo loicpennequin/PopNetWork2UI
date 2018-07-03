@@ -21,13 +21,17 @@ class MainNav extends React.Component {
     render() {
         const { t } = this.props;
         return (
-            <nav style={{display: 'flex'}}>
-                <p>{t('app title')}</p>
-                {
-                    this.props.authenticated
-                    ? <button onClick={this.props.logout}>{t('logout')}</button>
-                    : <button onClick={this.props.login}>{t('login')}</button>
-                }
+            <nav className="navbar is-fixed has-shadow">
+                <div className="container">
+                    <div className="navbar-left">
+                        <p>{t('app title')}</p>
+                    </div>
+                    <div className="navbar-right">
+                        {this.props.authenticated
+                            ? <button className="button is-nude" onClick={this.props.logout}>{t('logout')}</button>
+                            : <button className="button is-nude" onClick={this.props.login}>{t('login')}</button>}
+                    </div>
+                </div>
             </nav>
         )
     }

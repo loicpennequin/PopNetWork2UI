@@ -1,0 +1,10 @@
+.container
+    margin: 0 auto
+    max-width: $max-container-width
+    +mobile
+        max-width: none
+        width: calc(100% - #{$spacing-2}
+    +hd-only
+        max-width: 1450px
+    +tablet
+        max-width: 900px

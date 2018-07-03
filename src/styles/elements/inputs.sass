@@ -1,0 +1,26 @@
+.input
+    border-radius: $border-radius-1
+    border: $border-size-1 transparentize($black, 1)
+    transition: all 0.3s
+    padding: $spacing-2
+    &:not(.file)
+        background-color: transparentize($white, 0.35)
+    &:focus:not([readonly])
+        outline: none
+        border-color: transparentize($black, 0.8)
+        background-color: $white
+    &.has-success
+        border-color: $success
+    &.has-warning
+        border-color: $warning
+    &.has-danger
+        border-color: $danger
+    &.has-icon
+        padding-left: 30px
+    &[type="file"]
+        display: none
+    &.file
+        cursor: pointer
+        padding: $spacing-2
+        transition: background-color 0s
+        
