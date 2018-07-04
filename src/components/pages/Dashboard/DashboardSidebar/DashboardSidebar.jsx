@@ -19,6 +19,7 @@ class DashboardSidebar extends React.Component {
         return (
             <div>
                 <ul>
+                    <li>Home</li>
                     <li>FriendList</li>
                     <li>Projects</li>
                     <li>Apps</li>

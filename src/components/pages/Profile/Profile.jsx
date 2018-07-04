@@ -9,8 +9,7 @@ import { translate }  from 'react-i18next';
 import { subscribe }  from 'react-contextual';
 import store          from '../../../store/store.js';
 
-import api            from  '../../../resources/utils/wretch.js';
-
+import UserCard       from '../../common/UserCard/UserCard.jsx';
 @translate()
 class Profile extends React.Component {
     constructor(props){
@@ -21,9 +20,12 @@ class Profile extends React.Component {
     render() {
         const { t } = this.props;
         return (
-            <React.Fragment>
-                <h1>This is the profile</h1>
-            </React.Fragment>
+            <div className="container profile">
+                <aside>
+                    <UserCard />
+                </aside>
+                <main>Feed placeholder</main>
+            </div>
         )
     }
 }
