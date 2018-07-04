@@ -25,7 +25,7 @@ let w = wretch(constants.API_URL + '/api')
                 localStorage.setItem('token', json.token);
             }
             if ( json.userId ) {
-                localStorage.setItem('uid', json.token);
+                localStorage.setItem('uid', json.userId);
             }
             delete json.token;
             return momentizeObj(json);

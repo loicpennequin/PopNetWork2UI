@@ -8,7 +8,8 @@ let store = createStore({
     initialState: {
         authenticated : false,
         currentUser : undefined,
-        menuDisplayed : false
+        menuDisplayed : false,
+        menu: []
     },
     actions: Object.assign(
         {},

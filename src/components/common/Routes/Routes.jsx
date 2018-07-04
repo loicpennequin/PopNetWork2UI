@@ -17,8 +17,8 @@ const PrivateRoute = subscribe(store)(class PrivateRoute extends React.Component
             <Route {...rest}
                 render={ props =>
                     this.props.authenticated
-                        ? <Component {...props} />
-                    : <Redirect to={{pathname: '/', state: {from: this.props.location}}} />
+                        ? this.props.currentUser ? <Component {...props} /> : null
+                        : <Redirect to={{pathname: '/', state: {from: this.props.location}}} />
                 }
             />
         )
@@ -33,7 +33,7 @@ const LoggedOutRoute = subscribe(store)(class LoggedOutRoute extends React.Compo
                 render={ props =>
                     !this.props.authenticated
                         ? <Component {...props} />
-                    : <Redirect to={{pathname: '/dashboard', state: {from: this.props.location}}} />
+                        : <Redirect to={{pathname: '/dashboard', state: {from: this.props.location}}} />
                 }
             />
         )

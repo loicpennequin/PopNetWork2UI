@@ -9,31 +9,37 @@ export default [
    {
        label: "Dashboard",
        path: "/dashboard",
-       component: Dashboard
+       component: Dashboard,
+       link: "/dashboard"
    },
    {
        label: "Profile",
-       path: "/profile",
-       component: Profile
+       path: "/profile/:id",
+       component: Profile,
+       link: "/profile/" +  localStorage.getItem('uid')
    },
    {
        label: "Inbox",
        path: "/inbox",
-       component: Inbox
+       component: Inbox,
+       link: "/inbox"
    },
    {
        label: "Apps",
        path: "/apps",
-       component: Apps
+       component: Apps,
+       link: "/apps"
    },
    {
        label: "Projects",
        path: "/projects",
-       component: Projects
+       component: Projects,
+       link: "/projects"
    },
    {
        label: "Settings",
        path: "/settings",
-       component: Settings
+       component: Settings,
+       link: "/settings"
    }
 ]

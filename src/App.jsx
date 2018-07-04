@@ -19,7 +19,8 @@ import initialMenu                      from './resources/utils/initialMenu.js';
 
 @subscribe(store, s => ({
     authenticated: s.authenticated,
-    menu: s.menu
+    menu: s.menu,
+    addToMenu: s.actions.addToMenu
 }))
 class App extends React.Component {
     constructor(props){
@@ -28,6 +29,9 @@ class App extends React.Component {
     }
 
     async componentDidMount(){
+        for (let i = 0 ; i < initialMenu.length; i++){
+            await this.props.addToMenu(this.state.menu[i]);
+        }
         await AuthService.verifyAuth()
         this.setState({ loading: false});
     }

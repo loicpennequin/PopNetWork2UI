@@ -18,17 +18,15 @@ import initialMenu       from '../../../../resources/utils/initialMenu.js';
 import OnOutsideClick    from '../../OnOutsideClick/OnOutsideClick.jsx';
 
 @translate(['common', 'menu'])
-@subscribe(store, s => ({ toggle : s.actions.toggleMenu }))
+@subscribe(store, s => ({
+    toggle : s.actions.toggleMenu,
+    menu: s.menu
+}))
 class MainNavMenu extends React.Component {
     constructor(props){
         super(props);
-        this.state= {
-            menu : initialMenu,
-        }
         this.container = React.createRef();
     }
-
-
 
     render() {
         const { t } = this.props;
@@ -37,8 +35,8 @@ class MainNavMenu extends React.Component {
             <OnOutsideClick action={() => this.props.toggle()}
                             element={this.container}>
                 <div className="main-nav_menu grid is-4-columns" ref={this.container}>
-                    { this.state.menu.map(menuItem =>
-                            <NavLink to={menuItem.path}
+                    { this.props.menu.map(menuItem =>
+                            <NavLink to={menuItem.link}
                                      className="main-nav_menu_item"
                                      activeClassName="active"
                                      onClick={this.props.toggle}>
