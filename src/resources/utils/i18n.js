@@ -3,7 +3,7 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import Backend from 'i18next-xhr-backend';
 
 const cfg = {
-    debug: true,
+    debug: false,
     fallbackLng: 'fr',
     ns: ['common'],
     defaultNS: 'common',

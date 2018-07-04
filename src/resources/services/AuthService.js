@@ -5,8 +5,8 @@ export default class Authservice{
     static async verifyAuth(){
         let { error } = await api.get('/authenticated');
         if ( !error ){
-            store.actions.login();
-            store.actions.getCurrentUser();
+            await store.actions.login();
+            await store.actions.getCurrentUser();
         }
     }
 

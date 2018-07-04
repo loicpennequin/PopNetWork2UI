@@ -9,21 +9,23 @@ import { translate }  from 'react-i18next';
 import { subscribe }  from 'react-contextual';
 import store          from '../../../store/store.js';
 
-import UserModel      from  '../../../resources/models/UserModel.js';
-
-@translate()
+// @translate()
+@subscribe(store, s => {
+    return { currentUser: s.currentUser }
+})
 class Dashboard extends React.Component {
     constructor(props){
         super(props);
-
     }
 
     render() {
         const { t } = this.props;
         return (
-            <React.Fragment>
-                <h1>This is the dashboard</h1>
-            </React.Fragment>
+
+            <div className="container">
+                <p>{JSON.stringify(this.props.currentUser)}</p>
+            </div>
+
         )
     }
 }
