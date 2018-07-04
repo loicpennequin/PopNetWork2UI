@@ -15,15 +15,7 @@ import AuthService                      from './resources/services/AuthService.j
 import MainNav                          from './components/common/MainNav/MainNav.jsx';
 import { PrivateRoute, LoggedOutRoute } from './components/common/Routes/routes.jsx';
 import Home                             from './components/pages/Home/Home.jsx';
-
-import Dashboard                        from './components/pages/Dashboard/Dashboard.jsx';
-import Apps                             from './components/pages/Apps/Apps.jsx';
-import Profile                          from './components/pages/Profile/Profile.jsx';
-import Inbox                            from './components/pages/Inbox/Inbox.jsx';
-import Projects                         from './components/pages/Projects/Projects.jsx';
-import Settings                         from './components/pages/Settings/Settings.jsx';
-
-const pageComponents = { Dashboard, Apps, Profile, Inbox, Projects, Settings };
+import initialMenu                      from './resources/utils/initialMenu.js';
 
 @subscribe(store, s => ({
     authenticated: s.authenticated,
@@ -32,7 +24,7 @@ const pageComponents = { Dashboard, Apps, Profile, Inbox, Projects, Settings };
 class App extends React.Component {
     constructor(props){
         super(props);
-        this.state = { loading : true };
+        this.state = { loading : true, menu : initialMenu };
     }
 
     async componentDidMount(){
@@ -41,9 +33,9 @@ class App extends React.Component {
     }
 
     render() {
-        const routes = this.props.menu.map(menuItem =>
+        const routes = this.state.menu.map(menuItem =>
             <PrivateRoute exact path={menuItem.path}
-                component={pageComponents[menuItem.component]}>
+                component={menuItem.component}>
             </PrivateRoute>);
 
         return (

@@ -4,14 +4,11 @@ import authActions     from './actions/authActions.js';
 import menuActions     from './actions/menuActions.js';
 import userActions     from './actions/userActions.js';
 
-import initialMenu     from '../resources/utils/initialMenu.js';
-
 let store = createStore({
     initialState: {
         authenticated : false,
-        menuDisplayed : false,
-        menu: initialMenu,
-        currentUser : undefined
+        currentUser : undefined,
+        menuDisplayed : false
     },
     actions: Object.assign(
         {},

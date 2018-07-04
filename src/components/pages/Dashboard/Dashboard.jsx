@@ -12,9 +12,7 @@ import store          from '../../../store/store.js';
 import DashboardSidebar from './DashboardSidebar/DashboardSidebar.jsx';
 
 @translate()
-@subscribe(store, s => {
-    return { currentUser: s.currentUser }
-})
+@subscribe(store, s => ({ currentUser: s.currentUser }))
 class Dashboard extends React.Component {
     constructor(props){
         super(props);
@@ -22,12 +20,22 @@ class Dashboard extends React.Component {
 
     render() {
         const { t } = this.props;
+
+        if ( !this.props.currentUser ) {
+            return null;
+        }
+    
         return (
 
             <div className="dashboard">
                 <DashboardSidebar />
-                <main class="dashboard_content">
+                <main className="dashboard_content">
                     <h1 className="heading-1">Hello {this.props.currentUser.username}</h1>
+                    <div className="card">
+                        <div className="card-body">
+                            <h3 className="heading-3">Publications Feed</h3>
+                        </div>
+                    </div>
                     <div className="card">
                         <div className="card-body">
                             <h3 className="heading-3">Notifications widget</h3>

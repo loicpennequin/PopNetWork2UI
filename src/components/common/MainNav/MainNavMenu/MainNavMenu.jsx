@@ -13,20 +13,22 @@ import i18next           from '../../../../resources/utils/i18n.js';
 
 import api               from '../../../../resources/utils/wretch.js';
 import constants         from '../../../../resources/utils/constants.js';
+import initialMenu       from '../../../../resources/utils/initialMenu.js';
 
 import OnOutsideClick    from '../../OnOutsideClick/OnOutsideClick.jsx';
 
 @translate(['common', 'menu'])
-@subscribe(store, s => ({
-    menu: s.menu,
-    toggle: s.actions.toggleMenu
-}))
+@subscribe(store, s => ({ toggle : s.actions.toggleMenu }))
 class MainNavMenu extends React.Component {
     constructor(props){
         super(props);
-
+        this.state= {
+            menu : initialMenu,
+        }
         this.container = React.createRef();
     }
+
+
 
     render() {
         const { t } = this.props;
@@ -35,7 +37,7 @@ class MainNavMenu extends React.Component {
             <OnOutsideClick action={() => this.props.toggle()}
                             element={this.container}>
                 <div className="main-nav_menu grid is-4-columns" ref={this.container}>
-                    { this.props.menu.map(menuItem =>
+                    { this.state.menu.map(menuItem =>
                             <NavLink to={menuItem.path}
                                      className="main-nav_menu_item"
                                      activeClassName="active"
