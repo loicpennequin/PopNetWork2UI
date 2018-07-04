@@ -23,7 +23,9 @@ class Dashboard extends React.Component {
         return (
 
             <div className="container">
-                <p>{JSON.stringify(this.props.currentUser)}</p>
+                <h1 className="heading-1">Hello {this.props.currentUser.username}</h1>
+                <p>You have {this.props.currentUser.friendshipRequests.length} friend requests.</p>
+                <p>You have {this.props.currentUser.recievedMessages.length} unread messages.</p>
             </div>
 
         )

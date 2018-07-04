@@ -565,6 +565,8 @@ a, a:hover, a:visited {
     word-break: break-all;
     font-size: 0.75em;
     cursor: pointer; }
+    .main-nav_menu_item:hover {
+      box-shadow: 0 0 15px 0 rgba(255, 255, 255, 0.7); }
     .main-nav_menu_item_title {
       background-color: rgba(102, 102, 102, 0.5);
       padding: 4px;
