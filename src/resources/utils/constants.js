@@ -5,5 +5,6 @@ export default {
     SUPPORTED_LANGUAGES : [
         { i18nLabel : 'fr', flagCode: 'fr'},
         { i18nLabel : 'en', flagCode: 'gb'},
-    ]
+    ],
+    CLOUD_NAME : "hvpcct1ed"
 }

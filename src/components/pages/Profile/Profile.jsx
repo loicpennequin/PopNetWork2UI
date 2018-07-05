@@ -4,14 +4,15 @@
  * @author Daria <lo.pennequin@gmail.com>
  */
 
-import React          from 'react';
-import { translate }  from 'react-i18next';
-import { subscribe }  from 'react-contextual';
-import store          from '../../../store/store.js';
+import React            from 'react';
+import { translate }    from 'react-i18next';
+import { subscribe }    from 'react-contextual';
+import store            from '../../../store/store.js';
 
-import UserModel      from '../../../resources/models/UserModel.js'
+import UserModel        from '../../../resources/models/UserModel.js'
 
-import UserCard       from '../../common/UserCard/UserCard.jsx';
+import UserCard         from '../../common/UserCard/UserCard.jsx';
+import PublicationFeed  from '../../common/PublicationFeed/PublicationFeed.jsx';
 @translate()
 class Profile extends React.Component {
     constructor(props){
@@ -36,7 +37,12 @@ class Profile extends React.Component {
                 <aside>
                     <UserCard user={this.state.user} />
                 </aside>
-                <main>Feed placeholder</main>
+                <main>
+                    <h2 className="heading-2">
+                        Publications de {this.state.user.username} :
+                    </h2>
+                    <PublicationFeed publications={this.state.user.publications} />
+                </main>
             </div>
         )
     }

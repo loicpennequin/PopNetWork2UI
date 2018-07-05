@@ -12,6 +12,7 @@
   },
   "author": "Daria",
   "dependencies": {
+    "cloudinary-core": "^2.5.0",
     "gulp-if": "^2.0.2",
     "i18next": "^11.3.3",
     "i18next-browser-languagedetector": "^2.2.0",

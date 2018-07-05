@@ -1,0 +1,19 @@
+.avatar
+    border-radius: $border-radius-circle
+    &.is_empty
+        +gradient-vertical($primary, $secondary)
+        color: $white
+        font-family: $font-title
+        display: flex
+        justify-content: center
+        align-items: center
+        font-size: $font-size-4
+    &.small
+        width: 40px
+        height: 40px
+    &.medium
+        width: 60px
+        height: 60px
+    &.large
+        width: 90px
+        height: 90px
