@@ -16,9 +16,9 @@ const PrivateRoute = subscribe(store)(class PrivateRoute extends React.Component
         return (
             <Route {...rest}
                 render={ props =>
-                    this.props.authenticated
-                        ? this.props.currentUser ? <Component {...props} /> : null
-                        : <Redirect to={{pathname: '/', state: {from: this.props.location}}} />
+                this.props.authenticated
+                    ? <Component {...props} />
+                    : <Redirect to={{pathname: '/', state: {from: this.props.location}}} />
                 }
             />
         )
