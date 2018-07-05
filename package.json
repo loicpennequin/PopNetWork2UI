@@ -9,7 +9,7 @@
     "predeploy": "npm run test",
     "deploy": "git add . && git commit -m\"deploy commit\" && git push origin master && git push heroku master && heroku open"
   },
-  "author": "Daria, SkullyFox",
+  "author": "Daria",
   "dependencies": {
     "i18next": "^11.3.3",
     "i18next-browser-languagedetector": "^2.2.0",
@@ -50,11 +50,18 @@
     "gulp-sass": "^3.2.1",
     "gulp-sourcemaps": "^2.6.4",
     "gulp-uglify": "^3.0.0",
+    "jest-localstorage-mock": "^2.2.0",
     "node-notifier": "^5.2.1",
     "run-sequence": "^2.2.1",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0",
     "watchify": "^3.11.0"
+  },
+  "jest": {
+    "setupFiles": [
+        "jest-localstorage-mock",
+        "./jest.setup.js"
+    ]
   },
   "license": "ISC"
 }

@@ -3,12 +3,13 @@ import { dedupe }       from 'wretch-middlewares';
 import constants        from './constants.js';
 import { momentizeObj } from './helpers.js';
 
+const getToken = () => `Bearer ${localStorage.getItem('token')}`;
+
 let w = wretch(constants.API_URL + '/api')
     .middlewares([
         dedupe()
     ])
     .options({ credentials: "include", mode: "cors" })
-    .auth(`Bearer ${localStorage.getItem('token')}`)
     .resolve(resolver =>
         resolver
         .notFound( async (error, req) => {
@@ -36,19 +37,23 @@ export default {
     get : url =>
         w
         .url(url)
+        .auth(getToken())
         .get(),
     post : (url, body) =>
         w
         .url(url)
+        .auth(getToken())
         .json(body)
         .post(),
     put : (url, body) =>
         w
         .url(url)
+        .auth(getToken())
         .json(body)
         .put(),
     delete : url =>
         w
         .url(url)
+        .auth(getToken())
         .delete()
 }

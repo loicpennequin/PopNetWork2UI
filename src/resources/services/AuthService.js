@@ -13,7 +13,7 @@ export default class Authservice{
     static async login(body){
         let response = await api.post('/login', body);
         if ( response.userId ) {
-            store.actions.login();
+            await store.actions.login();
             store.actions.getCurrentUser();
         }
     }
