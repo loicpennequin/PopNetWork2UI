@@ -15,7 +15,10 @@ class UserCard extends React.Component {
 
         return (
             <div className="card">
-                User Card
+                <div className="card-body">
+                    <h4 className="heading-4">{this.props.user.username}</h4>
+                    <h4 className="heading-5">{this.props.user.email}</h4>
+                </div>
             </div>
         )
     }

@@ -18,4 +18,13 @@ export default class UserModel {
             return err;
         }
     }
+
+    static async getProfile(id){
+        try {
+            let response = await api.get('/users/profile/' + id);
+            return response;
+        } catch (err) {
+            return err;
+        }
+    }
 }
