@@ -4,6 +4,7 @@ const gulp          = require('gulp');
 const source        = require('vinyl-source-stream');
 const buffer        = require('vinyl-buffer');
 const sourcemaps    = require('gulp-sourcemaps');
+const gulpif        = require('gulp-if');
 const browserify    = require('browserify');
 const babelify      = require('babelify');
 const watchify      = require('watchify');
@@ -16,19 +17,24 @@ const logger        = require(path.join(__dirname, '../log.js'));
 // const opts          = cfg.bundle.options;
 const browserSync   = require(path.join(__dirname, 'serve.js'));
 
+const prod = process.env.NODE_ENV === 'production';
+
 const opts = {
     entries: cfg.paths.js.src,
     debug: true,
     cache: {},
-    transform: [babelify.configure({
-        presets: ["env", "react"],
-        plugins: [
-            "transform-class-properties",
-            "transform-react-constant-elements",
-            "transform-react-inline-elements",
-            "transform-decorators-legacy"
-        ]
-    })]
+    transform: [
+        babelify.configure({
+            presets: ["env", "react"],
+            plugins: [
+                "transform-class-properties",
+                "transform-react-constant-elements",
+                "transform-react-inline-elements",
+                "transform-decorators-legacy"
+            ]
+        }),
+        ['envify', {'global': true}],
+    ]
 };
 
 let _onError = (err) => {
@@ -53,9 +59,9 @@ let _bundleJS = (watch) => {
         })
         .pipe(source(cfg.paths.js.outputName))
         .pipe(buffer())
-        .pipe(sourcemaps.init({ loadMaps: true, largeFile: true }))
-        // .pipe(uglify())
-        .pipe(sourcemaps.write('./'))
+        .pipe(gulpif(!prod, sourcemaps.init({ loadMaps: true, largeFile: true })))
+        .pipe(gulpif(!prod, sourcemaps.write('./')))
+        .pipe(gulpif(prod, uglify()))
         .pipe(gulp.dest(cfg.paths.js.dst))
         .pipe(notify({
             title: "Browserify",
@@ -73,4 +79,4 @@ let _bundleJS = (watch) => {
     return rebundle();
 }
 
-gulp.task("browserify", () => _bundleJS(true));
+gulp.task("browserify", () => _bundleJS(!prod));
