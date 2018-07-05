@@ -34,7 +34,7 @@ const opts = {
                 "transform-decorators-legacy"
             ]
         }),
-        envify({global: true,})
+        envify({global: true, NODE_ENV : prod ? 'production' : 'development'})
     ]
 };
 
