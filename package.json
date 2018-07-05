@@ -7,7 +7,7 @@
     "test": "jest",
     "dev": "node node_modules/gulp/bin/gulp",
     "prod": "cross-env NODE_ENV=production node node_modules/gulp/bin/gulp",
-    "predeploy": "npm run test",
+    "predeploy": "npm run prod && npm run test",
     "deploy": "git add . && git commit -m\"deploy commit\" && git push origin master && git push heroku master && heroku open"
   },
   "author": "Daria",
@@ -54,6 +54,7 @@
     "gulp-sass": "^3.2.1",
     "gulp-sourcemaps": "^2.6.4",
     "gulp-uglify": "^3.0.0",
+    "jest-fetch-mock": "^1.6.5",
     "jest-localstorage-mock": "^2.2.0",
     "node-notifier": "^5.2.1",
     "run-sequence": "^2.2.1",
