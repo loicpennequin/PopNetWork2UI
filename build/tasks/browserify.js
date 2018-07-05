@@ -32,8 +32,7 @@ const opts = {
                 "transform-react-inline-elements",
                 "transform-decorators-legacy"
             ]
-        }),
-        ['envify', {'global': true}],
+        })
     ]
 };
 

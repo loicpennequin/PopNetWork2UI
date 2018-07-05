@@ -35,17 +35,17 @@ class MainNavMenu extends React.Component {
             <OnOutsideClick action={() => this.props.toggle()}
                             element={this.container}>
                 <div className="main-nav_menu grid is-4-columns" ref={this.container}>
-                    { this.props.menu.map(menuItem =>
-                            <NavLink to={menuItem.link}
-                                     className="main-nav_menu_item"
-                                     activeClassName="active"
-                                     onClick={this.props.toggle}>
-                                <span className="main-nav_menu_item_title">
-                                    {t(`menu:${menuItem.label}`)}
-                                </span>
-                            </NavLink>
-                        )
-                    }
+                    { this.props.menu.map(menuItem =>{
+                        const to = menuItem.link();
+                        return <NavLink to={to}
+                                 className="main-nav_menu_item"
+                                 activeClassName="active"
+                                 onClick={this.props.toggle}>
+                            <span className="main-nav_menu_item_title">
+                                {t(`menu:${menuItem.label}`)}
+                            </span>
+                        </NavLink>
+                    })}
                 </div>
             </OnOutsideClick>
 

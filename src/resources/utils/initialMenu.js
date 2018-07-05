@@ -10,36 +10,36 @@ export default [
        label: "Dashboard",
        path: "/dashboard",
        component: Dashboard,
-       link: "/dashboard"
+       link: () => "/dashboard"
    },
    {
        label: "Profile",
        path: "/profile/:id",
        component: Profile,
-       link: "/profile/" +  localStorage.getItem('uid')
+       link: () => "/profile/" +  localStorage.getItem('uid')
    },
    {
        label: "Inbox",
        path: "/inbox",
        component: Inbox,
-       link: "/inbox"
+       link: () => "/inbox"
    },
    {
        label: "Apps",
        path: "/apps",
        component: Apps,
-       link: "/apps"
+       link: () => "/apps"
    },
    {
        label: "Projects",
        path: "/projects",
        component: Projects,
-       link: "/projects"
+       link: () => "/projects"
    },
    {
        label: "Settings",
        path: "/settings",
        component: Settings,
-       link: "/settings"
+       link: () => "/settings"
    }
 ]
