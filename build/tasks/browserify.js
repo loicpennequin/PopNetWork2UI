@@ -8,6 +8,7 @@ const gulpif        = require('gulp-if');
 const browserify    = require('browserify');
 const babelify      = require('babelify');
 const watchify      = require('watchify');
+const envify        = require('envify/custom');
 const uglify        = require('gulp-uglify');
 const notify        = require('gulp-notify');
 const notifier      = require('node-notifier');
@@ -32,7 +33,8 @@ const opts = {
                 "transform-react-inline-elements",
                 "transform-decorators-legacy"
             ]
-        })
+        }),
+        envify({global: true,})
     ]
 };
 
