@@ -11,6 +11,7 @@ import store                from '../../../store/store.js';
 import i18next              from '../../../resources/utils/i18n.js';
 
 import constants            from '../../../resources/utils/constants.js';
+import PublicationModel     from '../../../resources/models/PublicationModel.js';
 
 import PublicationFeedItem  from './PublicationFeedItem/PublicationFeedItem.jsx';
 import PublicationForm      from './PublicationForm/PublicationForm.jsx';
@@ -20,6 +21,11 @@ class PublicationFeed extends React.Component {
         super(props);
     }
 
+    async onPublish(body){
+        await PublicationModel.create(body);
+        return this.props.onUpdate();
+    }
+
     render() {
         const list = this.props.publications.map((p,i) => (
             <PublicationFeedItem publication={p} key={'publication' + i}/>
@@ -27,7 +33,7 @@ class PublicationFeed extends React.Component {
 
         return (
             <div className="publication-feed">
-                {this.props.withForm == 'true' ? <PublicationForm /> : null}
+                {this.props.withForm == 'true' ? <PublicationForm onPublish={body => this.onPublish(body)} /> : null}
                 {
                     this.props.publications.length > 0
                         ? list

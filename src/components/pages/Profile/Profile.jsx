@@ -19,7 +19,7 @@ class Profile extends React.Component {
     state = {};
 
     static getDerivedStateFromProps(nextProps, prevState){
-        if ( nextProps.match.params.id !== prevState.id ){
+        if ( nextProps.match.params.id === prevState.id ){
             return { id : nextProps.match.params.id }
         } else {
             return null;
@@ -30,6 +30,10 @@ class Profile extends React.Component {
         this.setState(await this._getData());
     }
 
+    async updateData(){
+        this.setState(await this._getData());
+    }
+
     async _getData(){
         return {
             user: await UserModel.getProfile(this.props.match.params.id)
@@ -37,11 +41,13 @@ class Profile extends React.Component {
     }
 
     async componentDidUpdate(prevProps, prevState){
-        console.log(this.state.id);
-        console.log(prevState.id);
         if ( prevState.id !== this.state.id ){
             this.setState(await this._getData());
         }
+    }
+
+    publish(){
+
     }
 
     render() {
@@ -56,7 +62,9 @@ class Profile extends React.Component {
                     <UserCard user={this.state.user} withBio={true}/>
                 </aside>
                 <main className="profile-right">
-                    <PublicationFeed publications={this.state.user.publications} withForm="true"/>
+                    <PublicationFeed publications={this.state.user.publications}
+                                     withForm="true"
+                                     onUpdate={() => this.updateData()}/>
                 </main>
             </div>
         )

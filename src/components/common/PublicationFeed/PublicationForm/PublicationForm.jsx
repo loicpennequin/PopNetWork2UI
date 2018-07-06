@@ -9,7 +9,6 @@ import { translate }        from 'react-i18next';
 import { subscribe }        from 'react-contextual';
 import store                from '../../../../store/store.js';
 import i18next              from '../../../../resources/utils/i18n.js';
-import { Scrollbars }       from 'react-custom-scrollbars';
 
 import Form                 from '../../Form/Form.jsx';
 import Avatar               from '../../Avatar/Avatar.jsx';
@@ -24,9 +23,13 @@ class PublicationForm extends React.Component {
             focused : false
         }
 
+        this.publish = this.publish.bind(this);
         this.onFocus = this.onFocus.bind(this);
         this.onBlur = this.onBlur.bind(this);
-        this.input = React.createRef()
+    }
+
+    onChange(e){
+        this.setState({body: e.target.value});
     }
 
     onFocus(){
@@ -36,17 +39,27 @@ class PublicationForm extends React.Component {
     onBlur(){
         this.setState({ focused: false });
     }
+
+    publish(){
+        return this.props.onPublish({
+            body : this.state.body,
+            user_id : this.props.currentUser.id
+        })
+    }
+
     render() {
         const inputStyle = {height: this.state.focused ? '6em' : '1.5em'};
         return (
             <div className="publication-form">
                 <Avatar size="small" user={this.props.currentUser} className="publication-form_avatar"/>
                     <textarea className="publication-form_input"
+                              value={this.state.body}
+                              onChange={e => this.onChange(e)}
                               placeholder={this.state.focused === true ? '' : 'Express yourself'}
                               onFocus={this.onFocus}
                               onBlur={this.onBlur}
                               style={inputStyle}></textarea>
-                <button className="button is-primary is-rounded">Publier</button>
+                          <button className="button is-primary is-rounded" onClick={this.publish}>Publier</button>
             </div>
         )
     }
