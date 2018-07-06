@@ -8,6 +8,7 @@ import React            from 'react';
 import { translate }    from 'react-i18next';
 
 import Avatar           from '../Avatar/Avatar.jsx';
+
 @translate()
 class UserCard extends React.Component {
 
@@ -24,16 +25,19 @@ class UserCard extends React.Component {
                         <i className="far fa-envelope fa-lg fa-fw"></i>
                     </button>
                 </div>
+
                 <div className="card-body">
                     <div className="usercard-avatar-wrapper">
                         <Avatar user={this.props.user} className="usercard-avatar" size="extralarge" />
                     </div>
+
                     <h3 className="heading-2 usercard-username">{this.props.user.username}</h3>
                     {
                         this.props.user.bio !== null
                             ? <p className="usercard-bio">{this.props.user.bio}</p>
                             : <p className="usercard-bio empty">This user has no bio.</p>
                     }
+
                     <div className="action-bar usercard-links">
                         <a className="usercard-links_item"><i className="fab fa-facebook-square"></i></a>
                         <a className="usercard-links_item"><i className="fab fa-twitter"></i></a>

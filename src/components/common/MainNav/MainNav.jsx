@@ -42,7 +42,7 @@ class MainNav extends React.Component {
 
         const menuButton = this.props.authenticated
             ? (<button className="button is-nude"
-                      onMouseOver={this.props.openMenu}>
+                      onClick={this.props.openMenu}>
                       <i className="fas fa-bars fa-2x"></i>
               </button>)
             : null;

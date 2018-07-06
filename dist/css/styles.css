@@ -392,6 +392,7 @@ a, a:hover, a:visited {
   height: 100%; }
 
 .navbar {
+  background: linear-gradient(white, #e6e6e6);
   font-size: 1em;
   height: 50px; }
   @media screen and (max-width: 580px) {
@@ -540,6 +541,8 @@ a, a:hover, a:visited {
   grid-gap: 16px; }
   .profile-left {
     margin-top: 32px; }
+  .profile-right {
+    margin-top: 32px; }
 
 .avatar {
   border-radius: 50%; }
@@ -566,6 +569,72 @@ a, a:hover, a:visited {
     width: 120px;
     height: 120px;
     font-size: 60px; }
+
+.publication-feed {
+  background: linear-gradient(130deg, rgba(79, 201, 83, 0.5), rgba(90, 224, 242, 0.5));
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  padding: 16px; }
+  .publication-feed_item {
+    background-color: white;
+    color: #333333;
+    margin: 16px 0;
+    padding: 8px; }
+    .publication-feed_item_header {
+      display: flex;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      font-size: 1.25em;
+      margin-bottom: 8px; }
+      .publication-feed_item_header-avatar {
+        margin-right: 8px; }
+    .publication-feed_item_body {
+      max-width: 90%;
+      padding: 16px;
+      margin: 0 auto;
+      border-radius: 4px;
+      border: solid 1px #d9d9d9;
+      font-size: 1.25em; }
+  .publication-feed .author {
+    font-weight: 700; }
+  .publication-feed .metadata {
+    font-size: 0.75em; }
+
+.publication-form {
+  background-color: white;
+  padding: 8px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 16px;
+  border-radius: 8px; }
+  .publication-form_avatar {
+    margin-right: 8px; }
+  .publication-form_input {
+    resize: none;
+    outline: none;
+    margin-right: 8px;
+    flex-grow: 1;
+    transition: all 0.3s;
+    border-color: lightgrey; }
+    .publication-form_input:not(:focus) {
+      font-size: 1.75em;
+      border-color: transparent;
+      border-bottom-color: lightgray; }
+    .publication-form_input::-webkit-input-placeholder {
+      color: #d9d9d9; }
+    .publication-form_input:-ms-input-placeholder {
+      color: #d9d9d9; }
+    .publication-form_input::-ms-input-placeholder {
+      color: #d9d9d9; }
+    .publication-form_input::placeholder {
+      color: #d9d9d9; }
+
+.no-publication {
+  font-style: italic;
+  color: white;
+  text-align: center;
+  font-size: 1.25em; }
 
 .usercard {
   position: relative; }

@@ -13,6 +13,7 @@ import i18next              from '../../../resources/utils/i18n.js';
 import constants            from '../../../resources/utils/constants.js';
 
 import PublicationFeedItem  from './PublicationFeedItem/PublicationFeedItem.jsx';
+import PublicationForm      from './PublicationForm/PublicationForm.jsx';
 @translate()
 class PublicationFeed extends React.Component {
     constructor(props){
@@ -25,8 +26,17 @@ class PublicationFeed extends React.Component {
         ));
 
         return (
-            <div>
-                {list}
+            <div className="publication-feed">
+                {this.props.withForm == 'true' ? <PublicationForm /> : null}
+                {
+                    this.props.publications.length > 0
+                        ? list
+                        : <div className="no-publication">
+                            <div className="txt-center"><i class="far fa-eye-slash fa-3x"></i></div>
+                            Cet utilisateur n'a pas encore de publication. revenez plus tard !
+                        </div>
+                }
+
             </div>
         )
     }

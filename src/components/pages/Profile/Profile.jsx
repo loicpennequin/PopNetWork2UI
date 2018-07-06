@@ -13,17 +13,35 @@ import UserModel        from '../../../resources/models/UserModel.js'
 
 import UserCard         from '../../common/UserCard/UserCard.jsx';
 import PublicationFeed  from '../../common/PublicationFeed/PublicationFeed.jsx';
+
 @translate()
 class Profile extends React.Component {
-    constructor(props){
-        super(props);
-        this.state = {}
+    state = {};
+
+    static getDerivedStateFromProps(nextProps, prevState){
+        if ( nextProps.match.params.id !== prevState.id ){
+            return { id : nextProps.match.params.id }
+        } else {
+            return null;
+        }
     }
 
     async componentDidMount(){
-        this.setState({
+        this.setState(await this._getData());
+    }
+
+    async _getData(){
+        return {
             user: await UserModel.getProfile(this.props.match.params.id)
-        });
+        };
+    }
+
+    async componentDidUpdate(prevProps, prevState){
+        console.log(this.state.id);
+        console.log(prevState.id);
+        if ( prevState.id !== this.state.id ){
+            this.setState(await this._getData());
+        }
     }
 
     render() {
@@ -38,10 +56,7 @@ class Profile extends React.Component {
                     <UserCard user={this.state.user} withBio={true}/>
                 </aside>
                 <main className="profile-right">
-                    <h2 className="heading-2">
-                        Publications de {this.state.user.username} :
-                    </h2>
-                    <PublicationFeed publications={this.state.user.publications} />
+                    <PublicationFeed publications={this.state.user.publications} withForm="true"/>
                 </main>
             </div>
         )

@@ -25,8 +25,8 @@ const momentizeObj = obj => {
     if ( obj.created_at ) {
         return Object.assign(obj,
             {
-                created_at : obj.created_at ? moment(obj.created_at).format('dddd D MMMM') : undefined,
-                updated_at : obj.updated_at ? moment(obj.updated_at).format('dddd D MMMM') : undefined
+                created_at : obj.created_at ? moment(new Date(obj.created_at)).format('dddd D MMMM à HH:mm') : undefined,
+                updated_at : obj.updated_at ? moment(new Date(obj.created_at)).format('dddd D MMMM à HH:mm') : undefined
             }
         )
     }
@@ -35,7 +35,7 @@ const momentizeObj = obj => {
 
 const momentize = value => {
     moment.locale(i18n.language);
-    return  moment(value).format('dddd D MMMM');
+    return moment(new Date(value)).format('dddd D MMMM à HH:mm');
 }
 
 export {
