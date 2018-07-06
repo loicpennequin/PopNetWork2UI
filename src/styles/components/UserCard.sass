@@ -21,9 +21,7 @@
         cursor: pointer
         margin: $spacing-1
         font-size: $font-size-3
-        padding: $spacing-2
-        border-radius: 50%
-        border: $border-size-2 transparentize($white, 0.4)
+        border: none
         &:hover
             color: $white
             border-color: $white
@@ -49,6 +47,7 @@
         border-top: $border-size-1 $lightgrey
         &_item
             font-size: $font-size-4
+            color: $black
             cursor: pointer
             &:hover
                 color: $primary-dark
@@ -57,7 +56,7 @@
         padding: 65px $spacing-4 $spacing-3
     .card-header
         +gradient-diagonal($primary, $secondary)
-        padding: 0 !important
+        padding: $spacing-2
         height: $header-height
         flex-direction: column
         align-items: flex-end
