@@ -40,11 +40,14 @@ class PublicationForm extends React.Component {
         this.setState({ focused: false });
     }
 
-    publish(){
-        return this.props.onPublish({
-            body : this.state.body,
-            user_id : this.props.currentUser.id
-        })
+    async publish(){
+        if ( this.state.body !== '' ) {
+            await this.props.onPublish({
+                body : this.state.body,
+                user_id : this.props.currentUser.id
+            })
+            this.setState({ body: "" });
+        }
     }
 
     render() {
@@ -59,7 +62,10 @@ class PublicationForm extends React.Component {
                               onFocus={this.onFocus}
                               onBlur={this.onBlur}
                               style={inputStyle}></textarea>
-                          <button className="button is-primary is-rounded" onClick={this.publish}>Publier</button>
+                          <button className={`publication-form_submit
+                                  button is-primary is-rounded
+                                  ${this.state.body !== "" ? '' : 'is-disabled'}`}
+                                  onClick={this.publish}>Publier</button>
             </div>
         )
     }

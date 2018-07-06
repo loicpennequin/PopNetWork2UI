@@ -629,6 +629,8 @@ a, a:hover, a:visited {
       color: #d9d9d9; }
     .publication-form_input::placeholder {
       color: #d9d9d9; }
+  .publication-form_submit {
+    align-self: flex-start; }
 
 .no-publication {
   font-style: italic;
