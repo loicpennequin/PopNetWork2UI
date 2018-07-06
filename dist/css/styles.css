@@ -66,18 +66,6 @@ a, a:hover, a:visited {
     see https://bulma.io/documentation/overview/customize/
     @author Daria <lo.pennequin@gmail.com>
     @mixin =========================*/
-@font-face {
-  font-family: "Open Sans";
-  src: url("../assets/fonts/Open_Sans/OpenSans-regular.ttf"); }
-
-@font-face {
-  font-family: "Open Sans Bold";
-  src: url("../assets/fonts/Open_Sans/OpenSans-Bold.ttf"); }
-
-@font-face {
-  font-family: "Poiret One";
-  src: url("../assets/fonts/Poiret_One/PoiretOne-Regular.ttf"); }
-
 /*============================
     Fluid Typography mixin.
     Provided a range of browser width and font sizes, the typography of your app will automaticcaly and progressively change its size.
@@ -196,9 +184,6 @@ a, a:hover, a:visited {
 
 .txt-font-primary {
   font-family: "Open Sans", Helvetica, Arial, sans serif; }
-
-.txt-font-primary-bold {
-  font-family: "Open Sans Bold", Helvetica, Arial, sans serif; }
 
 .txt-font-title {
   font-family: "Poiret One", Helvetica, Arial, sans serif; }
