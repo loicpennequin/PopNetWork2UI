@@ -2,6 +2,10 @@
     "root" : "dist/",
     "clean_urls": true,
     "routes": {
-        "/*.html": "index.html"
+        "/assets/*": "/assets/",
+        "/css/*": "/css/",
+        "/js/*": "/js/",
+        "/locales/*": "/locales/",
+        "/**": "index.html"
     }
 }
