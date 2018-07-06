@@ -1,0 +1,63 @@
+.usercard
+    $header-height: 100px
+    position: relative
+
+    &-avatar
+        border-radius: 0 !important
+        clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)
+        &-wrapper
+            position: absolute
+            top: 0
+            left: 50%
+            transform: translate(-50%, 35px)
+            display: inline-block
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)
+            background-color: white
+            padding: 5px
+
+    &-action-btn
+        background-color: transparent
+        color: transparentize($white, 0.4)
+        cursor: pointer
+        margin: $spacing-1
+        font-size: $font-size-3
+        padding: $spacing-2
+        border-radius: 50%
+        border: $border-size-2 transparentize($white, 0.4)
+        &:hover
+            color: $white
+            border-color: $white
+
+    &-username
+        font-family: $font-title
+        text-align: center
+        margin-bottom: $spacing-2
+
+    &.no-bio .usercard-bio
+        display: none
+    &-bio
+        text-align: center
+        line-height: calc(#{$font-size-2} + 5px)
+        .empty
+            font-style: italic
+            color: $darkgrey
+
+    &-links
+        justify-content: space-around
+        padding-top: $spacing-3
+        margin-top: $spacing-3
+        border-top: $border-size-1 $lightgrey
+        &_item
+            font-size: $font-size-4
+            cursor: pointer
+            &:hover
+                color: $primary-dark
+
+    .card-body
+        padding: 65px $spacing-4 $spacing-3
+    .card-header
+        +gradient-diagonal($primary, $secondary)
+        padding: 0 !important
+        height: $header-height
+        flex-direction: column
+        align-items: flex-end

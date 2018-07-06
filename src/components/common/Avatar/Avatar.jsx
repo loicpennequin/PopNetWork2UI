@@ -17,11 +17,11 @@ class Avatar extends React.Component {
         if ( this.props.user.profile_picture_url !== null ){
             return (
                 <img src={cl.url(this.props.user.profile_picture_url)}
-                     className={"avatar " + this.props.size }/>
+                     className={`avatar ${this.props.size} ${this.props.className} `}/>
             )
         } else {
             return (
-                <div className={"avatar is_empty " + this.props.size }>
+                <div className={`avatar empty ${this.props.size} ${this.props.className} `}>
                     {this.props.user.username.slice(0,1).toUpperCase()}
                 </div>
             )

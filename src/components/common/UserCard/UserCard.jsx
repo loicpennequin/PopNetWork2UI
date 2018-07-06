@@ -15,11 +15,33 @@ class UserCard extends React.Component {
         const { t } = this.props;
 
         return (
-            <div className="card">
+            <div className={`card is-rounded usercard ${this.props.withBio ? '' : 'no-bio'}`}>
+                <div className="card-header flex">
+                    <button className="usercard-action-btn">
+                        <i className="fas fa-plus-circle fa-lg fa-fw"></i>
+                    </button>
+                    <button className="usercard-action-btn">
+                        <i className="far fa-envelope fa-lg fa-fw"></i>
+                    </button>
+                </div>
                 <div className="card-body">
-                    <Avatar user={this.props.user} size="medium" />
-                    <h4 className="heading-4">{this.props.user.username}</h4>
-                    <h4 className="heading-5">{this.props.user.email}</h4>
+                    <div className="usercard-avatar-wrapper">
+                        <Avatar user={this.props.user} className="usercard-avatar" size="extralarge" />
+                    </div>
+                    <h3 className="heading-2 usercard-username">{this.props.user.username}</h3>
+                    {
+                        this.props.user.bio !== null
+                            ? <p className="usercard-bio">{this.props.user.bio}</p>
+                            : <p className="usercard-bio empty">This user has no bio.</p>
+                    }
+                    <div className="action-bar usercard-links">
+                        <a className="usercard-links_item"><i className="fab fa-facebook-square"></i></a>
+                        <a className="usercard-links_item"><i className="fab fa-twitter"></i></a>
+                        <a className="usercard-links_item"><i className="fab fa-instagram"></i></a>
+                        <a className="usercard-links_item"><i className="fab fa-github"></i></a>
+                        <a className="usercard-links_item"><i className="fab fa-bitbucket"></i></a>
+                        <a className="usercard-links_item"><i className="fab fa-gitlab"></i></a>
+                    </div>
                 </div>
             </div>
         )

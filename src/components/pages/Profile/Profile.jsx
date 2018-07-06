@@ -34,10 +34,10 @@ class Profile extends React.Component {
         }
         return (
             <div className="container profile">
-                <aside>
-                    <UserCard user={this.state.user} />
+                <aside className="profile-left">
+                    <UserCard user={this.state.user} withBio={true}/>
                 </aside>
-                <main>
+                <main className="profile-right">
                     <h2 className="heading-2">
                         Publications de {this.state.user.username} :
                     </h2>

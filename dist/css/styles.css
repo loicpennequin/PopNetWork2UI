@@ -419,8 +419,9 @@ a, a:hover, a:visited {
     clear: both; }
   .navbar.is-fixed {
     position: fixed;
-    width: 100%;
-    top: 0; }
+    top: 0;
+    z-index: 10;
+    width: 100%; }
   .navbar.is-sticky {
     position: -webkit-sticky;
     position: sticky;
@@ -549,8 +550,11 @@ a, a:hover, a:visited {
 
 .profile {
   display: grid;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: minmax(-webkit-min-content, 280px) 3fr;
+  grid-template-columns: minmax(min-content, 280px) 3fr;
   grid-gap: 16px; }
+  .profile-left {
+    margin-top: 32px; }
 
 .avatar {
   border-radius: 50%; }
@@ -571,6 +575,69 @@ a, a:hover, a:visited {
   .avatar.large {
     width: 90px;
     height: 90px; }
+  .avatar.extralarge {
+    width: 120px;
+    height: 120px; }
+
+.usercard {
+  position: relative; }
+  .usercard-avatar {
+    border-radius: 0 !important;
+    -webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); }
+    .usercard-avatar-wrapper {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      -webkit-transform: translate(-50%, 35px);
+              transform: translate(-50%, 35px);
+      display: inline-block;
+      -webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+              clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+      background-color: white;
+      padding: 5px; }
+  .usercard-action-btn {
+    background-color: transparent;
+    color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    margin: 4px;
+    font-size: 1.25em;
+    padding: 8px;
+    border-radius: 50%;
+    border: solid 2px rgba(255, 255, 255, 0.6); }
+    .usercard-action-btn:hover {
+      color: white;
+      border-color: white; }
+  .usercard-username {
+    font-family: "Poiret One", Helvetica, Arial, sans serif;
+    text-align: center;
+    margin-bottom: 8px; }
+  .usercard.no-bio .usercard-bio {
+    display: none; }
+  .usercard-bio {
+    text-align: center;
+    line-height: calc(1em + 5px); }
+    .usercard-bio .empty {
+      font-style: italic;
+      color: #999999; }
+  .usercard-links {
+    justify-content: space-around;
+    padding-top: 16px;
+    margin-top: 16px;
+    border-top: solid 1px #d9d9d9; }
+    .usercard-links_item {
+      font-size: 1.5em;
+      cursor: pointer; }
+      .usercard-links_item:hover {
+        color: #36b03a; }
+  .usercard .card-body {
+    padding: 65px 32px 16px; }
+  .usercard .card-header {
+    background: linear-gradient(130deg, #4fc953, #5ae0f2);
+    padding: 0 !important;
+    height: 100px;
+    flex-direction: column;
+    align-items: flex-end; }
 
 .register-form {
   width: 50%;
@@ -582,7 +649,8 @@ a, a:hover, a:visited {
   background-color: #666666;
   padding: 8px;
   left: 16px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); }
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  z-index: 20; }
   .main-nav_menu_item {
     background: linear-gradient(white, #bfbfbf);
     height: 92px;

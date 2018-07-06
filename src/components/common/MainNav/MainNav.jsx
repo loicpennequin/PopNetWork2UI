@@ -26,7 +26,7 @@ const loginFormFields = [
 @subscribe(store, s => ({
     authenticated: s.authenticated,
     showMenu : s.menuDisplayed,
-    toggleMenu : s.actions.toggleMenu
+    openMenu : s.actions.openMenu
 }))
 class MainNav extends React.Component {
     render() {
@@ -42,7 +42,7 @@ class MainNav extends React.Component {
 
         const menuButton = this.props.authenticated
             ? (<button className="button is-nude"
-                      onClick={this.props.toggleMenu}>
+                      onMouseOver={this.props.openMenu}>
                       <i className="fas fa-bars fa-2x"></i>
               </button>)
             : null;
