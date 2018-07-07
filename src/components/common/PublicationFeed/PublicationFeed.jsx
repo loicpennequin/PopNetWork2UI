@@ -38,7 +38,7 @@ class PublicationFeed extends React.Component {
                     this.props.publications.length > 0
                         ? list
                         : <div className="no-publication">
-                            <div className="txt-center"><i class="far fa-eye-slash fa-3x"></i></div>
+                            <div className="txt-center"><i className="far fa-eye-slash fa-3x"></i></div>
                             Cet utilisateur n'a pas encore de publication. revenez plus tard !
                         </div>
                 }

@@ -19,7 +19,8 @@ class Profile extends React.Component {
     state = {};
 
     static getDerivedStateFromProps(nextProps, prevState){
-        if ( nextProps.match.params.id === prevState.id ){
+        if ( nextProps.match.params.id !== prevState.id ){
+            console.log('should rerender');
             return { id : nextProps.match.params.id }
         } else {
             return null;
