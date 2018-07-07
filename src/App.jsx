@@ -11,16 +11,18 @@ import store                            from './store/store.js';
 import { Switch, Route }                from 'react-router-dom';
 
 import AuthService                      from './resources/services/AuthService.js';
+import initialMenu                      from './resources/utils/initialMenu.js';
 
 import MainNav                          from './components/common/MainNav/MainNav.jsx';
 import { PrivateRoute, LoggedOutRoute } from './components/common/Routes/routes.jsx';
+import FriendList                       from './components/common/FriendList/FriendList.jsx';
 import Home                             from './components/pages/Home/Home.jsx';
-import initialMenu                      from './resources/utils/initialMenu.js';
 
 @subscribe(store, s => ({
     authenticated: s.authenticated,
     menu: s.menu,
-    addToMenu: s.actions.addToMenu
+    addToMenu: s.actions.addToMenu,
+    currentUser: s.currentUser
 }))
 class App extends React.Component {
     constructor(props){
@@ -46,10 +48,24 @@ class App extends React.Component {
             this.state.loading ? null : (
                 <React.Fragment>
                     <MainNav />
-                        <Switch>
-                            <LoggedOutRoute exact path="/" component={Home}/>
-                            {routes}
-                        </Switch>
+                        <div className={`main-content-layout ${this.props.authenticated ? 'logged-in' : ''}`}>
+                            <div>
+                                <Switch>
+                                    <LoggedOutRoute exact path="/" component={Home}/>
+                                    {routes}
+                                </Switch>
+                            </div>
+                            {
+                                this.props.authenticated && this.props.currentUser
+                                ? (
+                                    <div className="currentuser-friendlist">
+                                        <FriendList friends={this.props.currentUser.friends} />
+                                    </div>
+                                )
+                                : null
+                            }
+
+                        </div>
                 </React.Fragment>
             )
         )

@@ -543,9 +543,16 @@ a, a:hover, a:visited {
     margin-top: 32px; }
   .profile-right {
     margin-top: 32px; }
+  @media screen and (max-width: 580px) {
+    .profile {
+      display: block; }
+      .profile-left, .profile-right {
+        padding-left: 16px;
+        padding-right: 16px; } }
 
 .avatar {
-  border-radius: 50%; }
+  border-radius: 50%;
+  display: block; }
   .avatar.empty {
     background: linear-gradient(#4fc953, #5ae0f2);
     color: white;
@@ -749,3 +756,15 @@ html {
   background-color: #e6e6e6;
   overflow-x: hidden;
   color: #333333; }
+
+.main-content-layout {
+  display: grid;
+  grid-template-columns: 1fr; }
+  .main-content-layout.logged-in {
+    grid-template-columns: 1fr 300px; }
+    @media screen and (max-width: 580px) {
+      .main-content-layout.logged-in {
+        grid-template-columns: 1fr; } }
+  @media screen and (max-width: 580px) {
+    .main-content-layout .currentuser-friendlist {
+      display: none; } }

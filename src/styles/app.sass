@@ -50,3 +50,14 @@ html
     background-color: $background
     overflow-x: hidden
     color: $black
+
+.main-content-layout
+    display: grid
+    grid-template-columns: 1fr
+    &.logged-in
+        grid-template-columns: 1fr 300px
+        +mobile
+            grid-template-columns: 1fr
+    .currentuser-friendlist
+        +mobile
+            display: none
