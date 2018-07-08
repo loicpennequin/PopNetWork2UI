@@ -15,6 +15,7 @@ import PublicationModel     from '../../../resources/models/PublicationModel.js'
 import FixedContainer       from '../../common/FixedContainer/FixedContainer.jsx';
 import UserCard             from '../../common/UserCard/UserCard.jsx';
 import PublicationFeed      from '../../common/PublicationFeed/PublicationFeed.jsx';
+import ProfileFriendList    from './ProfileFriendList/ProfileFriendList.jsx';
 
 @translate()
 @subscribe(store, s => ({
@@ -25,7 +26,7 @@ import PublicationFeed      from '../../common/PublicationFeed/PublicationFeed.j
     getOlderFeed: s.actions.getCurrentProfileOlderFeed
 }))
 class Profile extends React.Component {
-    state = {};
+    state = {allFetched : false};
 
     static getDerivedStateFromProps(nextProps, prevState){
         if ( nextProps.match.params.id !== prevState.id ){
@@ -50,7 +51,8 @@ class Profile extends React.Component {
             offset: this.props.currentProfile.publications.length,
             where: JSON.stringify({user_id: this.props.currentProfile.id})
         });
-        this.props.getOlderFeed(Object.values(olderFeed));
+        this.props.getOlderFeed(olderFeed.publications);
+        this.setState({ allFetched : olderFeed.allFetched });
     }
 
     render() {
@@ -63,8 +65,9 @@ class Profile extends React.Component {
         return (
             <div className="profile">
                 <aside className="profile-left" id="sidebar-container">
-                    <FixedContainer>
+                    <FixedContainer sticky={true}>
                         <UserCard user={currentProfile} withBio={true}/>
+                        <ProfileFriendList />
                     </FixedContainer>
                 </aside>
                 <main className="profile-right">

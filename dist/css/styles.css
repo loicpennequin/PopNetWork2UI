@@ -564,6 +564,8 @@ a, a:hover, a:visited {
       .profile-left, .profile-right {
         padding-left: 16px;
         padding-right: 16px; } }
+  .profile .usercard {
+    margin-bottom: 16px; }
 
 .avatar {
   border-radius: 50%;

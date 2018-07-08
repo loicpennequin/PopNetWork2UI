@@ -10,12 +10,35 @@ import ContainerDimensions  from 'react-container-dimensions';
 class FixedContainer extends React.Component {
     constructor(props){
         super(props)
+        this.state = { isFixed : true };
+        this.myRef = React.createRef();
+
+        this.handleScroll = this.handleScroll.bind(this);
     }
+
+    componentDidMount(){
+        if ( this.props.sticky ){
+            window.addEventListener('scroll', this.handleScroll)
+        }
+    }
+
+    componentWillUnmount(){
+        if ( this.props.sticky ){
+            window.removeEventListener('scroll', this.handleScroll)
+        }
+    }
+
+    handleScroll(){
+
+    }
+
     render() {
         return (
             <ContainerDimensions>
                 {  ({ width }) =>
-                    <div className="fixed-container" style={{width: width + 'px'}}>
+                    <div className={this.state.isFixed ? 'fixed-container' : ''}
+                         style={{width: width + 'px'}}
+                         ref={this.myRef}>
                         {this.props.children}
                     </div>
                 }

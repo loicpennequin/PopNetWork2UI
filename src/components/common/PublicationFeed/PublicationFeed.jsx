@@ -19,7 +19,7 @@ import PublicationForm      from './PublicationForm/PublicationForm.jsx';
 class PublicationFeed extends React.Component {
     constructor(props){
         super(props);
-        this.state = { isFetching : false};
+        this.state = { isFetching : false, lastScrollTop: 0};
         this.element = React.createRef();
 
         this.handleScroll = this.handleScroll.bind(this);
@@ -44,7 +44,8 @@ class PublicationFeed extends React.Component {
     }
 
     async handleScroll(){
-        if ( this.state.isFetching === false ) {
+        if ( this.state.isFetching === false && window.scrollY > this.state.lastScrollTop ) {
+            await this.setState({ lastScrollTop : window.scrollY });
             let el = this.element.current.getBoundingClientRect();
             if ( window.scrollY > el.bottom - (el.height * 0.15) - window.innerHeight ){
                 await this.setState({ isFetching: true });

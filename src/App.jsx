@@ -16,11 +16,13 @@ import initialMenu                      from './resources/utils/initialMenu.js';
 import MainNav                          from './components/common/MainNav/MainNav.jsx';
 import { PrivateRoute, LoggedOutRoute } from './components/common/Routes/routes.jsx';
 import FriendList                       from './components/common/FriendList/FriendList.jsx';
+import FixedContainer                   from './components/common/FixedContainer/FixedContainer.jsx';
 import Home                             from './components/pages/Home/Home.jsx';
 
 @subscribe(store, s => ({
     authenticated: s.authenticated,
     menu: s.menu,
+    addToMenu: s.actions.addToMenu,
     addToMenu: s.actions.addToMenu,
     currentUser: s.currentUser
 }))
@@ -58,11 +60,11 @@ class App extends React.Component {
                             {
                                 this.props.authenticated && this.props.currentUser
                                 ? (
-                                    <div className="currentuser-friendlist">
-                                        <div className="fixed-container">
+                                    <aside className="currentuser-friendlist">
+                                        <FixedContainer>
                                             <FriendList friends={this.props.currentUser.friends} />
-                                        </div>
-                                    </div>
+                                        </FixedContainer>
+                                    </aside>
                                 )
                                 : null
                             }
