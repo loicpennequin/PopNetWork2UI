@@ -52,7 +52,7 @@ class Profile extends React.Component {
             where: JSON.stringify({user_id: this.props.currentProfile.id})
         });
         this.props.getOlderFeed(olderFeed.publications);
-        this.setState({ allFetched : olderFeed.allFetched });
+        await this.setState({ allFetched : olderFeed.allFetched });
     }
 
     render() {
@@ -74,7 +74,8 @@ class Profile extends React.Component {
                     <PublicationFeed publications={currentProfile.publications}
                                      withForm={currentProfile.id === currentUser.id}
                                      onAdd={id => this.props.addToFeed(id)}
-                                     onScroll={() => this.fetchOlderFeed()}/>
+                                     onScroll={() => this.fetchOlderFeed()}
+                                     allFetched={this.state.allFetched}/>
                 </main>
             </div>
         )

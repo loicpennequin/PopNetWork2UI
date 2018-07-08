@@ -17,10 +17,6 @@ import i18n                         from '../../resources/utils/i18n.js';
 import App                          from '../../App.jsx';
 
 class AppContainer extends React.Component {
-    constructor(props){
-        super(props);
-    }
-
     render() {
         return (
             <Provider store={store}>

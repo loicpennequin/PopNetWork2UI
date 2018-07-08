@@ -50,26 +50,26 @@ class App extends React.Component {
             this.state.loading ? null : (
                 <React.Fragment>
                     <MainNav />
-                        <div className={`main-content-layout ${this.props.authenticated ? 'logged-in' : ''}`}>
-                            <div>
-                                <Switch>
-                                    <LoggedOutRoute exact path="/" component={Home}/>
-                                    {routes}
-                                </Switch>
-                            </div>
-                            {
-                                this.props.authenticated && this.props.currentUser
-                                ? (
-                                    <aside className="currentuser-friendlist">
-                                        <FixedContainer>
-                                            <FriendList friends={this.props.currentUser.friends} />
-                                        </FixedContainer>
-                                    </aside>
-                                )
-                                : null
-                            }
-
+                    <div className={`main-content-layout ${this.props.authenticated ? 'logged-in' : ''}`}>
+                        <div>
+                            <Switch>
+                                <LoggedOutRoute exact path="/" component={Home}/>
+                                {routes}
+                            </Switch>
                         </div>
+                        {
+                            this.props.authenticated && this.props.currentUser
+                            ? (
+                                <aside className="currentuser-friendlist">
+                                    <FixedContainer>
+                                        <FriendList friends={this.props.currentUser.friends} />
+                                    </FixedContainer>
+                                </aside>
+                            )
+                            : null
+                        }
+
+                    </div>
                 </React.Fragment>
             )
         )

@@ -594,6 +594,32 @@ a, a:hover, a:visited {
     height: 120px;
     font-size: 60px; }
 
+.searchbar {
+  position: relative; }
+  .searchbar-input_container {
+    display: flex;
+    flex-direction: row; }
+    .searchbar-input_container input:focus {
+      outline: none; }
+  .searchbar-results {
+    background-color: white;
+    position: absolute;
+    width: 100%;
+    top: 100%;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); }
+    .searchbar-results_item {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 8px;
+      cursor: pointer; }
+      .searchbar-results_item:not(:last-child) {
+        border-bottom: solid 1px #d9d9d9; }
+      .searchbar-results_item:hover {
+        color: #4fc953; }
+      .searchbar-results_item .avatar {
+        margin-right: 8px; }
+
 .publication-feed {
   background: linear-gradient(130deg, rgba(79, 201, 83, 0.5), rgba(90, 224, 242, 0.5));
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);

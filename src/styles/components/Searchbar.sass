@@ -1,0 +1,25 @@
+.searchbar
+    position: relative
+    &-input_container
+        display: flex
+        flex-direction: row
+        input:focus
+            outline: none
+    &-results
+        background-color: $foreground
+        position: absolute
+        width: 100%
+        top: 100%
+        box-shadow: $boxshadow-2
+        &_item
+            display: flex
+            flex-direction: row
+            align-items: center
+            padding: $spacing-2
+            cursor: pointer
+            &:not(:last-child)
+                border-bottom: $border-size-1 $lightgrey
+            &:hover
+                color: $primary
+            .avatar
+                margin-right: $spacing-2

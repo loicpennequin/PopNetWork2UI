@@ -30,4 +30,13 @@ export default class UserModel {
             return err;
         }
     }
+
+    static async getPaginated(params){
+        try {
+            let response = await api.get('/users', params);
+            return response;
+        } catch (err) {
+            return err;
+        }
+    }
 }

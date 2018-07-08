@@ -22,10 +22,10 @@ class OnOutsideClick extends React.Component {
     }
 
     handleClickOutside(e){
-        let children = Array.from(this.props.element.current.childNodes);
+        let children = Array.from(this.props.element.current.getElementsByTagName("*"));
         let isInside = children.some( node => e.target === node);
-
         if ( e.target !== this.props.element.current && !isInside ){
+
             this.props.action();
         }
     }
