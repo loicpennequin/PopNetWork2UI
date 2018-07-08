@@ -19,7 +19,7 @@ const logger        = require(path.join(__dirname, '../log.js'));
 const browserSync   = require(path.join(__dirname, 'serve.js'));
 
 const prod = process.env.NODE_ENV === 'production';
-
+console.log(prod);
 const opts = {
     entries: cfg.paths.js.src,
     debug: true,
