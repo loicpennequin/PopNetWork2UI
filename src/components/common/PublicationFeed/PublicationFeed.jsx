@@ -10,20 +10,48 @@ import { subscribe }        from 'react-contextual';
 import store                from '../../../store/store.js';
 import i18next              from '../../../resources/utils/i18n.js';
 
-import constants            from '../../../resources/utils/constants.js';
 import PublicationModel     from '../../../resources/models/PublicationModel.js';
 
 import PublicationFeedItem  from './PublicationFeedItem/PublicationFeedItem.jsx';
 import PublicationForm      from './PublicationForm/PublicationForm.jsx';
+
 @translate()
 class PublicationFeed extends React.Component {
     constructor(props){
         super(props);
+        this.state = { isFetching : false};
+        this.element = React.createRef();
+
+        this.handleScroll = this.handleScroll.bind(this);
     }
 
     async onPublish(body){
-        await PublicationModel.create(body);
-        return this.props.onUpdate();
+        let { id } = await PublicationModel.create(body);
+        let publication = await PublicationModel.getById(id);
+        this.props.onAdd(publication);
+    }
+
+    componentDidMount(){
+        if ( this.props.onScroll ){
+            window.addEventListener('scroll', this.handleScroll)
+        }
+    }
+
+    componentWillUnmount(){
+        if ( this.props.onScroll ){
+            window.removeEventListener('scroll', this.handleScroll)
+        }
+    }
+
+    async handleScroll(){
+        if ( this.state.isFetching === false ) {
+            let el = this.element.current.getBoundingClientRect();
+            if ( window.scrollY > el.bottom - (el.height * 0.15) - window.innerHeight ){
+                await this.setState({ isFetching: true });
+                await this.props.onScroll();
+                await this.setState({ isFetching: false});
+            }
+        }
     }
 
     render() {
@@ -32,8 +60,8 @@ class PublicationFeed extends React.Component {
         ));
 
         return (
-            <div className="publication-feed">
-                {this.props.withForm == 'true' ? <PublicationForm onPublish={body => this.onPublish(body)} /> : null}
+            <div className="publication-feed" ref={this.element}>
+                {this.props.withForm === true ? <PublicationForm onPublish={body => this.onPublish(body)} /> : null}
                 {
                     this.props.publications.length > 0
                         ? list

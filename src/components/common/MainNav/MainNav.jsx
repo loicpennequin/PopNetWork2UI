@@ -10,12 +10,12 @@ import { subscribe }     from 'react-contextual';
 import store             from '../../../store/store.js';
 import i18next           from '../../../resources/utils/i18n.js';
 
-import api               from '../../../resources/utils/wretch.js';
 import constants         from '../../../resources/utils/constants.js';
 import AuthService       from '../../../resources/services/AuthService.js';
 
 import Form              from '../Form/Form.jsx';
 import MainNavMenu       from './MainNavMenu/MainNavMenu.jsx';
+import Searchbar         from './Searchbar/Searchbar.jsx';
 
 const loginFormFields = [
     {label: 'username', name: 'username', type: 'text'},
@@ -61,6 +61,8 @@ class MainNav extends React.Component {
                         <p>{t('app title')}</p>
                     </div>
                     <div className="navbar-right">
+
+                        {this.props.authenticated ? <Searchbar /> : null }
                         {authHandler}
                         {flagsList}
                     </div>

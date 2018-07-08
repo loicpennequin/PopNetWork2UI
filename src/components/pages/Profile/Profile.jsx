@@ -4,23 +4,31 @@
  * @author Daria <lo.pennequin@gmail.com>
  */
 
-import React            from 'react';
-import { translate }    from 'react-i18next';
-import { subscribe }    from 'react-contextual';
-import store            from '../../../store/store.js';
+import React                from 'react';
+import { translate }        from 'react-i18next';
+import { subscribe }        from 'react-contextual';
+import store                from '../../../store/store.js';
 
-import UserModel        from '../../../resources/models/UserModel.js'
+import UserModel            from '../../../resources/models/UserModel.js'
+import PublicationModel     from '../../../resources/models/PublicationModel.js'
 
-import UserCard         from '../../common/UserCard/UserCard.jsx';
-import PublicationFeed  from '../../common/PublicationFeed/PublicationFeed.jsx';
+import FixedContainer       from '../../common/FixedContainer/FixedContainer.jsx';
+import UserCard             from '../../common/UserCard/UserCard.jsx';
+import PublicationFeed      from '../../common/PublicationFeed/PublicationFeed.jsx';
 
 @translate()
+@subscribe(store, s => ({
+    currentUser : s.currentUser,
+    currentProfile: s.currentProfile,
+    getCurrentProfile: s.actions.getCurrentProfile,
+    addToFeed: s.actions.addToCurrentProfileFeed,
+    getOlderFeed: s.actions.getCurrentProfileOlderFeed
+}))
 class Profile extends React.Component {
     state = {};
 
     static getDerivedStateFromProps(nextProps, prevState){
         if ( nextProps.match.params.id !== prevState.id ){
-            console.log('should rerender');
             return { id : nextProps.match.params.id }
         } else {
             return null;
@@ -28,44 +36,42 @@ class Profile extends React.Component {
     }
 
     async componentDidMount(){
-        this.setState(await this._getData());
-    }
-
-    async updateData(){
-        this.setState(await this._getData());
-    }
-
-    async _getData(){
-        return {
-            user: await UserModel.getProfile(this.props.match.params.id)
-        };
+        await this.props.getCurrentProfile(this.props.match.params.id)
     }
 
     async componentDidUpdate(prevProps, prevState){
         if ( prevState.id !== this.state.id ){
-            this.setState(await this._getData());
+            await this.props.getCurrentProfile(this.props.match.params.id)
         }
     }
 
-    publish(){
-
+    async fetchOlderFeed(){
+        let olderFeed = await PublicationModel.getPaginated({
+            offset: this.props.currentProfile.publications.length,
+            where: JSON.stringify({user_id: this.props.currentProfile.id})
+        });
+        this.props.getOlderFeed(Object.values(olderFeed));
     }
 
     render() {
-        const { t } = this.props;
+        const { t, currentUser, currentProfile } = this.props;
 
-        if ( !this.state.user ){
+        if ( !currentProfile ){
             return null;
         }
+
         return (
-            <div className="container profile">
-                <aside className="profile-left">
-                    <UserCard user={this.state.user} withBio={true}/>
+            <div className="profile">
+                <aside className="profile-left" id="sidebar-container">
+                    <FixedContainer>
+                        <UserCard user={currentProfile} withBio={true}/>
+                    </FixedContainer>
                 </aside>
                 <main className="profile-right">
-                    <PublicationFeed publications={this.state.user.publications}
-                                     withForm="true"
-                                     onUpdate={() => this.updateData()}/>
+                    <PublicationFeed publications={currentProfile.publications}
+                                     withForm={currentProfile.id === currentUser.id}
+                                     onAdd={id => this.props.addToFeed(id)}
+                                     onScroll={() => this.fetchOlderFeed()}/>
                 </main>
             </div>
         )

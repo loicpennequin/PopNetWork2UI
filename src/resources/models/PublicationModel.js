@@ -9,4 +9,22 @@ export default class UserModel {
             return err;
         }
     }
+
+    static async getById(id) {
+        try {
+            let response = await api.get('/publications/' + id);
+            return response;
+        } catch (err) {
+            return err;
+        }
+    }
+
+    static async getPaginated(params){
+        try {
+            let response = await api.get('/publications', params);
+            return response;
+        } catch (err) {
+            return err;
+        }
+    }
 }

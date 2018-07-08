@@ -59,7 +59,9 @@ class App extends React.Component {
                                 this.props.authenticated && this.props.currentUser
                                 ? (
                                     <div className="currentuser-friendlist">
-                                        <FriendList friends={this.props.currentUser.friends} />
+                                        <div className="fixed-container">
+                                            <FriendList friends={this.props.currentUser.friends} />
+                                        </div>
                                     </div>
                                 )
                                 : null

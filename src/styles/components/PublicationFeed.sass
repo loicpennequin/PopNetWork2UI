@@ -23,6 +23,12 @@
             border-radius: $border-radius-1
             border: $border-size-1 $lightgrey
             font-size: $font-size-3
+            a
+                color: $primary
+            img
+                display: block
+                max-width: 80%
+                margin: 0 auto
 
     .author
         font-weight: 700
@@ -37,6 +43,8 @@
     align-items: center
     margin-bottom: $spacing-3
     border-radius: $border-radius-2
+    border: $border-size-1 $grey
+    box-shadow: $boxshadow-2
     &_avatar
         margin-right: $spacing-2
     &_input
@@ -49,9 +57,9 @@
         &:not(:focus)
             font-size: $font-size-5
             border-color: transparent
-            border-bottom-color: lightgray
+            border-bottom-color: $grey
         &::placeholder
-            color: $lightgrey
+            color: $grey
     &_submit
         align-self: flex-start
 

@@ -34,9 +34,10 @@ let w = wretch(constants.API_URL + '/api')
     );
 
 export default {
-    get : url =>
+    get : (url, params) =>
         w
         .url(url)
+        .query(params)
         .auth(getToken())
         .get(),
     post : (url, body) =>

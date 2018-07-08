@@ -3,6 +3,7 @@ import { createStore } from 'react-contextual'
 import authActions     from './actions/authActions.js';
 import menuActions     from './actions/menuActions.js';
 import userActions     from './actions/userActions.js';
+import profileActions   from './actions/profileActions.js';
 
 let store = createStore({
     initialState: {
@@ -15,7 +16,8 @@ let store = createStore({
         {},
         authActions,
         menuActions,
-        userActions
+        userActions,
+        profileActions
     )
 });
 

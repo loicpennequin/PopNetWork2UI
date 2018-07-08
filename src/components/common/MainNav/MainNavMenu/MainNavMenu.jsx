@@ -11,7 +11,6 @@ import { NavLink }       from 'react-router-dom';
 import store             from '../../../../store/store.js';
 import i18next           from '../../../../resources/utils/i18n.js';
 
-import api               from '../../../../resources/utils/wretch.js';
 import constants         from '../../../../resources/utils/constants.js';
 import initialMenu       from '../../../../resources/utils/initialMenu.js';
 

@@ -5,7 +5,6 @@
  */
 
 import React                     from 'react';
-import api                       from  '../../../resources/utils/wretch.js';
 import { getDefaultInputValue }  from '../../../resources/utils/helpers.js';
 
 import Input                     from '../Input/Input.jsx';

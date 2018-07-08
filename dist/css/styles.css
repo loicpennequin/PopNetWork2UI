@@ -205,6 +205,9 @@ a, a:hover, a:visited {
 .centered-h {
   margin: 0 auto; }
 
+.fixed-container {
+  position: fixed; }
+
 /*============================
     Flexbox helper classes.
     @author Daria <lo.pennequin@gmail.com>
@@ -538,7 +541,19 @@ a, a:hover, a:visited {
   display: grid;
   grid-template-columns: minmax(-webkit-min-content, 280px) 3fr;
   grid-template-columns: minmax(min-content, 280px) 3fr;
-  grid-gap: 16px; }
+  grid-gap: 16px;
+  margin: 0 auto;
+  max-width: 900px; }
+  @media screen and (max-width: 580px) {
+    .profile {
+      max-width: none;
+      width: calc(100% - 8px); } }
+  @media screen and (min-width: 1400px) {
+    .profile {
+      max-width: 1000px; } }
+  @media screen and (max-width: 980px) {
+    .profile {
+      max-width: 700px; } }
   .profile-left {
     margin-top: 32px; }
   .profile-right {
@@ -602,6 +617,12 @@ a, a:hover, a:visited {
       border-radius: 4px;
       border: solid 1px #d9d9d9;
       font-size: 1.25em; }
+      .publication-feed_item_body a {
+        color: #4fc953; }
+      .publication-feed_item_body img {
+        display: block;
+        max-width: 80%;
+        margin: 0 auto; }
   .publication-feed .author {
     font-weight: 700; }
   .publication-feed .metadata {
@@ -614,7 +635,9 @@ a, a:hover, a:visited {
   flex-direction: row;
   align-items: center;
   margin-bottom: 16px;
-  border-radius: 8px; }
+  border-radius: 8px;
+  border: solid 1px #bfbfbf;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); }
   .publication-form_avatar {
     margin-right: 8px; }
   .publication-form_input {
@@ -627,15 +650,15 @@ a, a:hover, a:visited {
     .publication-form_input:not(:focus) {
       font-size: 1.75em;
       border-color: transparent;
-      border-bottom-color: lightgray; }
+      border-bottom-color: #bfbfbf; }
     .publication-form_input::-webkit-input-placeholder {
-      color: #d9d9d9; }
+      color: #bfbfbf; }
     .publication-form_input:-ms-input-placeholder {
-      color: #d9d9d9; }
+      color: #bfbfbf; }
     .publication-form_input::-ms-input-placeholder {
-      color: #d9d9d9; }
+      color: #bfbfbf; }
     .publication-form_input::placeholder {
-      color: #d9d9d9; }
+      color: #bfbfbf; }
   .publication-form_submit {
     align-self: flex-start; }
 
@@ -750,8 +773,8 @@ html {
 
 #app {
   padding-top: 50px;
-  min-height: 100vh;
   font-family: "Open Sans", Helvetica, Arial, sans serif;
+  min-height: 100vh;
   font-size: 0.85rem;
   background-color: #e6e6e6;
   overflow-x: hidden;
@@ -765,6 +788,8 @@ html {
     @media screen and (max-width: 580px) {
       .main-content-layout.logged-in {
         grid-template-columns: 1fr; } }
-  @media screen and (max-width: 580px) {
-    .main-content-layout .currentuser-friendlist {
-      display: none; } }
+  .main-content-layout .currentuser-friendlist {
+    padding-top: 32px; }
+    @media screen and (max-width: 580px) {
+      .main-content-layout .currentuser-friendlist {
+        display: none; } }

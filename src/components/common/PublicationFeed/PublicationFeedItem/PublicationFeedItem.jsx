@@ -7,6 +7,7 @@
 import React                from 'react';
 import { translate }        from 'react-i18next';
 import i18next              from '../../../../resources/utils/i18n.js';
+import urlRegex             from 'url-regex';
 
 import Avatar               from '../../Avatar/Avatar.jsx';
 
@@ -14,6 +15,24 @@ import Avatar               from '../../Avatar/Avatar.jsx';
 class PublicationFeedItem extends React.Component {
     constructor(props){
         super(props);
+    }
+
+    createMarkup() {
+        let bodyToParse = this.props.publication.body.slice();
+        let urls = bodyToParse.match(urlRegex());
+
+        if ( Array.isArray(urls) ){
+            bodyToParse = urls.reduce((acc, url) => {
+                if ( url.endsWith('.jpg') ||
+                     url.endsWith('.png') ||
+                     url.endsWith('.gif') ){
+                    return acc.replace(url, '') + `<a href="${url}" target="_blank"><img src="${url}"/></a>`;
+                } else {
+                    return acc.replace(url, `<a href="${url}">${url}</a>`);
+                }
+            }, bodyToParse);
+        }
+        return { __html: bodyToParse };
     }
 
     render() {
@@ -29,9 +48,8 @@ class PublicationFeedItem extends React.Component {
                         <div className="metadata">le {publication.created_at} :</div>
                     </div>
                 </div>
-                <div className="publication-feed_item_body">
-                    {publication.body}
-                </div>
+                <div className="publication-feed_item_body"
+                     dangerouslySetInnerHTML={this.createMarkup()}></div>
             </div>
         )
     }
