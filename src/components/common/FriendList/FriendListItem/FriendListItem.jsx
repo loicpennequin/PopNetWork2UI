@@ -16,7 +16,7 @@ class FriendListItem extends React.Component {
         const { t } = this.props;
 
         return (
-            <div className={`friendlist`}>
+            <div className={`friendlist-item`}>
                 <Avatar size="small" user={this.props.friend}/>
                 {this.props.friend.username}
             </div>

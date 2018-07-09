@@ -19,7 +19,6 @@ class FriendList extends React.Component {
         );
         return (
             <div className={`friendlist`}>
-                <h3>Friend List</h3>
                 {friends}
             </div>
         );

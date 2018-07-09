@@ -12,7 +12,8 @@ import store                from '../../../../store/store.js';
 import FriendList           from '../../../common/FriendList/FriendList.jsx';
 @translate()
 @subscribe(store, s => ({
-    friends : s.currentProfile.friends
+    friends : s.currentProfile.friends,
+    count: s.currentProfile.friends_count
 }))
 class ProfileFriendList extends React.Component {
     constructor(props){
@@ -21,7 +22,10 @@ class ProfileFriendList extends React.Component {
 
     render() {
         return(
-            <div className="card is-rounded">
+            <div className="card is-rounded profile-friendlist">
+                <div className="card-header">
+                    <h3 className="heading-5">{this.props.count} Friends</h3>
+                </div>
                 <div className="card-body">
                     <FriendList friends={this.props.friends} />
                 </div>

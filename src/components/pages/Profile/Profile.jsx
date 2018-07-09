@@ -65,9 +65,11 @@ class Profile extends React.Component {
         return (
             <div className="profile">
                 <aside className="profile-left" id="sidebar-container">
-                    <FixedContainer sticky={true}>
-                        <UserCard user={currentProfile} withBio={true}/>
-                        <ProfileFriendList />
+                    <FixedContainer>
+                        <div className="profile-left-content">
+                            <UserCard user={currentProfile} withBio={true}/>
+                            <ProfileFriendList />
+                        </div>
                     </FixedContainer>
                 </aside>
                 <main className="profile-right">

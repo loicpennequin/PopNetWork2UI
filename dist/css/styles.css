@@ -554,8 +554,9 @@ a, a:hover, a:visited {
   @media screen and (max-width: 980px) {
     .profile {
       max-width: 700px; } }
-  .profile-left {
-    margin-top: 32px; }
+  .profile-left-content {
+    margin-top: 32px;
+    padding-right: 16px; }
   .profile-right {
     margin-top: 32px; }
   @media screen and (max-width: 580px) {
@@ -593,6 +594,38 @@ a, a:hover, a:visited {
     width: 120px;
     height: 120px;
     font-size: 60px; }
+
+.profile-friendlist .card-header {
+  background: linear-gradient(130deg, #4fc953, #5ae0f2);
+  color: white; }
+
+.profile-friendlist .friendlist {
+  display: flex;
+  flex-flow: row wrap;
+  padding: 0; }
+  .profile-friendlist .friendlist-item {
+    display: block;
+    width: calc(50% - 16px);
+    padding: 16px 8px;
+    border: solid 1px #d9d9d9;
+    margin: 4px;
+    text-align: center; }
+    .profile-friendlist .friendlist-item .avatar {
+      border-radius: 0 !important;
+      margin: 0 auto; }
+
+.friendlist {
+  padding: 16px; }
+  .friendlist-item {
+    background-color: white;
+    padding: 8px;
+    border-radius: 4px;
+    display: flex;
+    margin-bottom: 8px;
+    flex-direction: row;
+    align-items: center; }
+    .friendlist-item .avatar {
+      margin-right: 8px; }
 
 .searchbar {
   position: relative; }
@@ -812,7 +845,7 @@ html {
   display: grid;
   grid-template-columns: 1fr; }
   .main-content-layout.logged-in {
-    grid-template-columns: 1fr 300px; }
+    grid-template-columns: 1fr 250px; }
     @media screen and (max-width: 580px) {
       .main-content-layout.logged-in {
         grid-template-columns: 1fr; } }

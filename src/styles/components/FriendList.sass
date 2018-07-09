@@ -1,0 +1,31 @@
+.profile-friendlist
+    .card-header
+        +gradient-diagonal($primary, $secondary)
+        color: $white
+    .friendlist
+        display: flex
+        flex-flow: row wrap
+        padding: 0
+        &-item
+            display: block
+            width: calc(50% - #{$spacing-2 * 2})
+            padding: $spacing-3 $spacing-2
+            border: $border-size-1 $lightgrey
+            margin: $spacing-1
+            text-align: center
+            .avatar
+                border-radius: 0 !important
+                margin: 0 auto
+
+.friendlist
+    padding: $spacing-3
+    &-item
+        background-color: $foreground
+        padding: $spacing-2
+        border-radius: $border-radius-1
+        display: flex
+        margin-bottom: $spacing-2
+        flex-direction: row
+        align-items: center
+        .avatar
+            margin-right: $spacing-2

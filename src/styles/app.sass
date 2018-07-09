@@ -32,6 +32,7 @@
 
 //REACT COMPONENTS
 @import "components/Avatar.sass"
+@import "components/FriendList.sass"
 @import "components/Searchbar.sass"
 @import "components/PublicationFeed.sass"
 @import "components/UserCard.sass"
@@ -56,7 +57,7 @@ html
     display: grid
     grid-template-columns: 1fr
     &.logged-in
-        grid-template-columns: 1fr 300px
+        grid-template-columns: 1fr 250px
         +mobile
             grid-template-columns: 1fr
     .currentuser-friendlist
