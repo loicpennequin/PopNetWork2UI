@@ -864,6 +864,45 @@ a, a:hover, a:visited {
     .main-nav_menu_item.active {
       background: linear-gradient(#4fc953, #5ae0f2); }
 
+.mobile-menu {
+  display: block;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: 100vw;
+  font-size: 1.5em;
+  background-color: white;
+  -webkit-animation: slide-in 0.6s ease-out;
+          animation: slide-in 0.6s ease-out; }
+  .mobile-menu li {
+    border-bottom: solid 1px lightgrey;
+    padding: 4px;
+    text-align: right; }
+    .mobile-menu li .onoutsideclick {
+      margin-right: 0;
+      margin-left: auto;
+      display: inline-block; }
+
+@-webkit-keyframes slide-in {
+  from {
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+    opacity: 0; }
+  to {
+    -webkit-transform: none;
+            transform: none;
+    opacity: 1; } }
+
+@keyframes slide-in {
+  from {
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+    opacity: 0; }
+  to {
+    -webkit-transform: none;
+            transform: none;
+    opacity: 1; } }
+
 html {
   font-size: 12px; }
   @media screen and (min-width: 350px) {
@@ -882,18 +921,17 @@ html {
   overflow-x: hidden;
   color: #333333; }
 
-.main-content-layout {
+.main-content-layout.logged-in {
   display: grid;
-  grid-template-columns: 1fr; }
-  .main-content-layout.logged-in {
-    grid-template-columns: 1fr 230px; }
-    @media screen and (max-width: 580px) {
-      .main-content-layout.logged-in {
-        grid-template-columns: 1fr; } }
-  .main-content-layout .currentuser-friendlist {
-    padding-top: 8px;
-    background-color: white;
-    min-height: 100vh; }
-    @media screen and (max-width: 580px) {
-      .main-content-layout .currentuser-friendlist {
-        display: none; } }
+  grid-template-columns: 1fr 230px; }
+  @media screen and (max-width: 580px) {
+    .main-content-layout.logged-in {
+      display: block; } }
+
+.main-content-layout .currentuser-friendlist {
+  padding-top: 8px;
+  background-color: white;
+  min-height: 100vh; }
+  @media screen and (max-width: 580px) {
+    .main-content-layout .currentuser-friendlist {
+      display: none; } }

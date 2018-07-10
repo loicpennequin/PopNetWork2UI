@@ -98,7 +98,6 @@ $z-index-modal: 50
     text-rendering: auto
     -webkit-font-smoothing: antialiased
 
-
 =mobile
     @media screen and (max-width: 580px)
         @content
@@ -108,7 +107,7 @@ $z-index-modal: 50
         @content
 
 =tablet-only
-    @media screen and (max-width: 581px)
+    @media screen and (min-width: 581px)
         @content
 
 =desktop-only

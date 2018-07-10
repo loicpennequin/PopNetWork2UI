@@ -14,11 +14,11 @@ class OnOutsideClick extends React.Component {
     }
 
     componentDidMount() {
-        document.addEventListener('mouseup', this.handleClickOutside);
+        document.addEventListener('click', this.handleClickOutside);
     }
 
     componentWillUnmount() {
-        document.removeEventListener('mouseup', this.handleClickOutside);
+        document.removeEventListener('click', this.handleClickOutside);
     }
 
     handleClickOutside(e){
@@ -32,7 +32,7 @@ class OnOutsideClick extends React.Component {
 
     render() {
         return (
-            <div ref={this.element}>
+            <div className="onoutsideclick"ref={this.element}>
                 {this.props.children}
             </div>
         )

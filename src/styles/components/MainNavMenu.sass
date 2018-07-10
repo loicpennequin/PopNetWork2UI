@@ -35,3 +35,30 @@
             color: $white
         &.active
             +gradient-vertical($primary, $secondary)
+
+
+.mobile-menu
+    display: block
+    position: absolute
+    top: $navbar-height
+    left: 0
+    width: 100vw
+    font-size: $font-size-4
+    background-color: $white
+    animation: slide-in 0.6s ease-out
+    li
+        border-bottom: $border-size-1 lightgrey
+        padding: $spacing-1
+        text-align: right
+        .onoutsideclick
+            margin-right: 0
+            margin-left: auto
+            display: inline-block
+
+@keyframes slide-in
+    from
+        transform: translateX(100%)
+        opacity: 0
+    to
+        transform: none
+        opacity: 1

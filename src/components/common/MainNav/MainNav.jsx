@@ -11,10 +11,12 @@ import store             from '../../../store/store.js';
 import i18next           from '../../../resources/utils/i18n.js';
 
 import constants         from '../../../resources/utils/constants.js';
+import isMobile          from '../../../resources/utils/detectMobile.js';
 import AuthService       from '../../../resources/services/AuthService.js';
 
 import Form              from '../Form/Form.jsx';
 import MainNavMenu       from './MainNavMenu/MainNavMenu.jsx';
+import MainNavMobileMenu from './MainNavMobileMenu/MainNavMobileMenu.jsx';
 import Searchbar         from './Searchbar/Searchbar.jsx';
 
 const loginFormFields = [
@@ -54,6 +56,8 @@ class MainNav extends React.Component {
             </button>
         ))
 
+        const searchBar= this.props.authenticated ? <Searchbar /> : null;
+
         return (
             <nav className="navbar is-fixed has-shadow">
                 <div className="container">
@@ -62,10 +66,11 @@ class MainNav extends React.Component {
                         <p>{t('app title')}</p>
                     </div>
                     <div className="navbar-right">
+                        { isMobile(navigator.userAgent)
+                            ? <MainNavMobileMenu />
+                            : [searchBar, authHandler, flagsList]
+                        }
 
-                        {this.props.authenticated ? <Searchbar /> : null }
-                        {authHandler}
-                        {flagsList}
                     </div>
                 </div>
                 {

@@ -36,7 +36,7 @@
 @import "components/Searchbar.sass"
 @import "components/PublicationFeed.sass"
 @import "components/UserCard.sass"
-@import "components/Registerform.sass"
+@import "components/RegisterForm.sass"
 @import "components/MainNavMenu.sass"
 
 //APP GLOBAL STYLES
@@ -54,12 +54,11 @@ html
     color: $black
 
 .main-content-layout
-    display: grid
-    grid-template-columns: 1fr
     &.logged-in
+        display: grid
         grid-template-columns: 1fr 230px
         +mobile
-            grid-template-columns: 1fr
+            display: block
     .currentuser-friendlist
         padding-top: $spacing-2
         background-color: $foreground

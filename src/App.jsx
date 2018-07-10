@@ -14,7 +14,7 @@ import AuthService                      from './resources/services/AuthService.j
 import initialMenu                      from './resources/utils/initialMenu.js';
 
 import MainNav                          from './components/common/MainNav/MainNav.jsx';
-import { PrivateRoute, LoggedOutRoute } from './components/common/Routes/routes.jsx';
+import { PrivateRoute, LoggedOutRoute } from './components/common/Routes/Routes.jsx';
 import FriendList                       from './components/common/FriendList/FriendList.jsx';
 import FixedContainer                   from './components/common/FixedContainer/FixedContainer.jsx';
 import Home                             from './components/pages/Home/Home.jsx';
@@ -36,7 +36,7 @@ class App extends React.Component {
         for (let i = 0 ; i < initialMenu.length; i++){
             await this.props.addToMenu(this.state.menu[i]);
         }
-        await AuthService.verifyAuth()
+        await AuthService.verifyAuth();
         this.setState({ loading: false});
     }
 

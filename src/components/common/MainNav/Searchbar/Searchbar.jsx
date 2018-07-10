@@ -26,8 +26,18 @@ class Searchbar extends React.Component{
 
     hideResults(){
         setTimeout(() =>{
-            this.setState({ showResults: false });
+            if ( this._ismounted === true ){
+                this.setState({ showResults: false });
+            }
         });
+    }
+
+    componentDidMount() {
+        this._ismounted = true;
+    }
+
+    componentWillUnmount(){
+        this._ismounted = false;
     }
 
     async getResults(e){

@@ -63,7 +63,6 @@ class Profile extends React.Component {
             return null;
         }
 
-        console.log(isMobile(navigator.userAgent));
         const leftSideContent = isMobile(navigator.userAgent)
         ? (<div className="profile-left-content">
                 <UserCard user={currentProfile} withBio={true}/>
