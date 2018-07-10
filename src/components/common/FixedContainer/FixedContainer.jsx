@@ -14,6 +14,7 @@ class FixedContainer extends React.Component {
         super(props)
     }
 
+
     render() {
         return (
             <ContainerDimensions>

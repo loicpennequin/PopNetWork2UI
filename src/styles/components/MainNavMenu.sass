@@ -6,6 +6,11 @@
     left: $spacing-3
     box-shadow: $boxshadow-2
     z-index: $z-index-menu
+    +mobile
+        width: 100%
+        left: 50%
+        transform: translate(-50%)
+
     &_item
         +gradient-vertical($white, $grey)
         height: ($menu-width / 4) - $spacing-1 * 2
@@ -20,6 +25,8 @@
         word-break: break-all
         font-size: $font-size-1
         cursor: pointer
+        +mobile
+            height: ($menu-width-mobile / 2.5) - $spacing-1 * 2
         &:hover
             box-shadow: 0 0 15px 0 transparentize($white, 0.3)
         &_title

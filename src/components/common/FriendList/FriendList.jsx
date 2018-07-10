@@ -15,7 +15,7 @@ class FriendList extends React.Component {
     render() {
         const { t } = this.props;
         const friends = this.props.friends.map(
-            friend => (<FriendListItem friend={friend} />)
+            friend => (<FriendListItem friend={friend} withActions={this.props.withActions} />)
         );
         return (
             <div className={`friendlist`}>

@@ -57,10 +57,12 @@ html
     display: grid
     grid-template-columns: 1fr
     &.logged-in
-        grid-template-columns: 1fr 250px
+        grid-template-columns: 1fr 230px
         +mobile
             grid-template-columns: 1fr
     .currentuser-friendlist
-        padding-top: $spacing-4
+        padding-top: $spacing-2
+        background-color: $foreground
+        min-height: 100vh
         +mobile
             display: none

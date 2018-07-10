@@ -543,22 +543,38 @@ a, a:hover, a:visited {
   grid-template-columns: minmax(min-content, 280px) 3fr;
   grid-gap: 16px;
   margin: 0 auto;
-  max-width: 900px; }
+  max-width: 980px; }
   @media screen and (max-width: 580px) {
     .profile {
+      display: block;
       max-width: none;
       width: calc(100% - 8px); } }
   @media screen and (min-width: 1400px) {
     .profile {
-      max-width: 1000px; } }
+      max-width: 1200px; } }
   @media screen and (max-width: 980px) {
     .profile {
       max-width: 700px; } }
   .profile-left-content {
     margin-top: 32px;
     padding-right: 16px; }
+  @media screen and (max-width: 580px) {
+    .profile-left {
+      padding-top: 8px; }
+      .profile-left-content {
+        margin: 32px auto 16px;
+        padding: 0; } }
   .profile-right {
     margin-top: 32px; }
+    @media screen and (max-width: 580px) {
+      .profile-right {
+        margin-top: 0; } }
+    .profile-right .publication-feed {
+      margin: 0 auto;
+      max-width: 60ch; }
+      @media screen and (max-width: 580px) {
+        .profile-right .publication-feed {
+          padding: 0; } }
   @media screen and (max-width: 580px) {
     .profile {
       display: block; }
@@ -610,22 +626,39 @@ a, a:hover, a:visited {
     border: solid 1px #d9d9d9;
     margin: 4px;
     text-align: center; }
+    @media screen and (max-width: 580px) {
+      .profile-friendlist .friendlist-item {
+        width: calc(33% - 16px); } }
     .profile-friendlist .friendlist-item .avatar {
       border-radius: 0 !important;
       margin: 0 auto; }
 
 .friendlist {
-  padding: 16px; }
+  height: 100%; }
   .friendlist-item {
     background-color: white;
     padding: 8px;
+    padding-right: 0;
     border-radius: 4px;
     display: flex;
-    margin-bottom: 8px;
     flex-direction: row;
-    align-items: center; }
+    align-items: center;
+    border-bottom: solid 1px #d9d9d9; }
     .friendlist-item .avatar {
       margin-right: 8px; }
+    .friendlist-item .action-bar {
+      margin-left: auto; }
+    .friendlist-item .button {
+      color: #4fc953;
+      border: solid 1px #4fc953;
+      border-radius: 4px;
+      transition: none; }
+      .friendlist-item .button:hover {
+        transition: all 0.3s;
+        background-color: #4fc953;
+        color: white; }
+      .friendlist-item .button:not(:last-child) {
+        margin-right: 4px; }
 
 .searchbar {
   position: relative; }
@@ -654,14 +687,13 @@ a, a:hover, a:visited {
         margin-right: 8px; }
 
 .publication-feed {
-  background: linear-gradient(130deg, rgba(79, 201, 83, 0.5), rgba(90, 224, 242, 0.5));
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   padding: 16px; }
   .publication-feed_item {
     background-color: white;
     color: #333333;
-    margin: 16px 0;
-    padding: 8px; }
+    margin: 4px 0;
+    padding: 8px 16px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); }
     .publication-feed_item_header {
       display: flex;
       display: flex;
@@ -676,7 +708,7 @@ a, a:hover, a:visited {
       padding: 16px;
       margin: 0 auto;
       border-radius: 4px;
-      border: solid 1px #d9d9d9;
+      box-shadow: 0 2px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
       font-size: 1.25em; }
       .publication-feed_item_body a {
         color: #4fc953; }
@@ -800,6 +832,12 @@ a, a:hover, a:visited {
   left: 16px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   z-index: 20; }
+  @media screen and (max-width: 580px) {
+    .main-nav_menu {
+      width: 100%;
+      left: 50%;
+      -webkit-transform: translate(-50%);
+              transform: translate(-50%); } }
   .main-nav_menu_item {
     background: linear-gradient(white, #bfbfbf);
     height: 92px;
@@ -814,6 +852,9 @@ a, a:hover, a:visited {
     word-break: break-all;
     font-size: 0.75em;
     cursor: pointer; }
+    @media screen and (max-width: 580px) {
+      .main-nav_menu_item {
+        height: 112px; } }
     .main-nav_menu_item:hover {
       box-shadow: 0 0 15px 0 rgba(255, 255, 255, 0.7); }
     .main-nav_menu_item_title {
@@ -845,12 +886,14 @@ html {
   display: grid;
   grid-template-columns: 1fr; }
   .main-content-layout.logged-in {
-    grid-template-columns: 1fr 250px; }
+    grid-template-columns: 1fr 230px; }
     @media screen and (max-width: 580px) {
       .main-content-layout.logged-in {
         grid-template-columns: 1fr; } }
   .main-content-layout .currentuser-friendlist {
-    padding-top: 32px; }
+    padding-top: 8px;
+    background-color: white;
+    min-height: 100vh; }
     @media screen and (max-width: 580px) {
       .main-content-layout .currentuser-friendlist {
         display: none; } }

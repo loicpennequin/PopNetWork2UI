@@ -1,12 +1,13 @@
 .publication-feed
-    +gradient-diagonal($primary-half, $secondary-half)
-    box-shadow: $boxshadow-3
+    // +gradient-diagonal($primary-half, $secondary-half)
+    // box-shadow: $boxshadow-3
     padding: $spacing-3
     &_item
         background-color: $white
         color: $black
-        margin: $spacing-3 0
-        padding: $spacing-2
+        margin: $spacing-1 0
+        padding: $spacing-2 $spacing-3
+        box-shadow: $boxshadow-1
         &_header
             display: flex
             display: flex
@@ -21,7 +22,7 @@
             padding: $spacing-3
             margin: 0 auto
             border-radius: $border-radius-1
-            border: $border-size-1 $lightgrey
+            box-shadow: $boxshadow-1
             font-size: $font-size-3
             a
                 color: $primary

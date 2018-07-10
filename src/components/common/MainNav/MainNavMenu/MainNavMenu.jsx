@@ -12,6 +12,7 @@ import store             from '../../../../store/store.js';
 import i18next           from '../../../../resources/utils/i18n.js';
 
 import constants         from '../../../../resources/utils/constants.js';
+import isMobile          from '../../../../resources/utils/detectMobile.js';
 import initialMenu       from '../../../../resources/utils/initialMenu.js';
 
 import OnOutsideClick    from '../../OnOutsideClick/OnOutsideClick.jsx';
@@ -33,7 +34,7 @@ class MainNavMenu extends React.Component {
         return (
             <OnOutsideClick action={() => this.props.toggle()}
                             element={this.container}>
-                <div className="main-nav_menu grid is-4-columns" ref={this.container}>
+                <div className={`main-nav_menu grid is-${isMobile(navigator.userAgent) ? 3 : 4}-columns`} ref={this.container}>
                     { this.props.menu.map(menuItem =>{
                         const to = menuItem.link();
                         return <NavLink to={to}

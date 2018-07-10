@@ -13,19 +13,35 @@
             border: $border-size-1 $lightgrey
             margin: $spacing-1
             text-align: center
+            +mobile
+                width: calc(33% - #{$spacing-2 * 2})
             .avatar
                 border-radius: 0 !important
                 margin: 0 auto
 
 .friendlist
-    padding: $spacing-3
+    height: 100%
     &-item
         background-color: $foreground
         padding: $spacing-2
+        padding-right: 0
         border-radius: $border-radius-1
         display: flex
-        margin-bottom: $spacing-2
         flex-direction: row
         align-items: center
+        border-bottom: $border-size-1 $lightgrey
         .avatar
             margin-right: $spacing-2
+        .action-bar
+            margin-left: auto
+        .button
+            color: $primary
+            border: $border-size-1 $primary
+            border-radius: $border-radius-1
+            transition: none
+            &:hover
+                transition: all 0.3s
+                background-color: $primary
+                color: $white
+            &:not(:last-child)
+                margin-right: $spacing-1

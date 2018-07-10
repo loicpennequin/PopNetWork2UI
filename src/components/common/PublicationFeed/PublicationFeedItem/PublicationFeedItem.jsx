@@ -41,15 +41,25 @@ class PublicationFeedItem extends React.Component {
         return (
             <div className="publication-feed_item">
                 <div className="publication-feed_item_header">
-                    <Avatar size="small" user={publication.author}
+                    <Avatar size="medium" user={publication.author}
                             className="publication-feed_item_header-avatar"/>
                     <div>
                         <div className="author">{publication.author.username} </div>
-                        <div className="metadata">le {publication.created_at} :</div>
+                        <div className="metadata">le {publication.created_at} </div>
                     </div>
                 </div>
                 <div className="publication-feed_item_body"
                      dangerouslySetInnerHTML={this.createMarkup()}></div>
+                 <div className="publication-feed_item_footer">
+                     <div className="action-bar is-right">
+                         <button className="button is-nude txt-primary">
+                             <i className="far fa-heart"></i> {publication.likes_count}
+                         </button>
+                         <button className="button is-nude txt-primary">
+                             <i className="far fa-comments"></i> {publication.comments_count}
+                         </button>
+                     </div>
+                 </div>
             </div>
         )
     }

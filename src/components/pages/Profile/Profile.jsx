@@ -10,6 +10,7 @@ import { subscribe }        from 'react-contextual';
 import store                from '../../../store/store.js';
 
 import UserModel            from '../../../resources/models/UserModel.js'
+import isMobile             from '../../../resources/utils/detectMobile.js'
 import PublicationModel     from '../../../resources/models/PublicationModel.js'
 
 import FixedContainer       from '../../common/FixedContainer/FixedContainer.jsx';
@@ -62,19 +63,27 @@ class Profile extends React.Component {
             return null;
         }
 
+        console.log(isMobile(navigator.userAgent));
+        const leftSideContent = isMobile(navigator.userAgent)
+        ? (<div className="profile-left-content">
+                <UserCard user={currentProfile} withBio={true}/>
+                <ProfileFriendList />
+            </div>)
+        : (<FixedContainer>
+            <div className="profile-left-content">
+                <UserCard user={currentProfile} withBio={true}/>
+                <ProfileFriendList />
+            </div>
+        </FixedContainer>);
+
         return (
             <div className="profile">
                 <aside className="profile-left" id="sidebar-container">
-                    <FixedContainer>
-                        <div className="profile-left-content">
-                            <UserCard user={currentProfile} withBio={true}/>
-                            <ProfileFriendList />
-                        </div>
-                    </FixedContainer>
+                    { leftSideContent}
                 </aside>
                 <main className="profile-right">
                     <PublicationFeed publications={currentProfile.publications}
-                                     withForm={currentProfile.id === currentUser.id}
+                                     withForm={currentProfile.id === currentUser.id && !isMobile(navigator.userAgent)}
                                      onAdd={id => this.props.addToFeed(id)}
                                      onScroll={() => this.fetchOlderFeed()}
                                      allFetched={this.state.allFetched}/>

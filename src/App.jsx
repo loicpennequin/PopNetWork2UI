@@ -62,7 +62,7 @@ class App extends React.Component {
                             ? (
                                 <aside className="currentuser-friendlist">
                                     <FixedContainer>
-                                        <FriendList friends={this.props.currentUser.friends} />
+                                        <FriendList friends={this.props.currentUser.friends} withActions={true}/>
                                     </FixedContainer>
                                 </aside>
                             )
