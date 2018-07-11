@@ -5,13 +5,14 @@
  */
 
 import React            from 'react';
+import { translate }     from 'react-i18next';
 import UserModel        from '../../../../resources/models/UserModel.js';
 import { Link }         from 'react-router-dom';
 
 import Avatar           from '../../Avatar/Avatar.jsx';
 import OnOutsideClick   from '../../OnOutsideClick/OnOutsideClick.jsx';
 
-
+@translate()
 class Searchbar extends React.Component{
     constructor(props){
         super(props);
@@ -59,6 +60,8 @@ class Searchbar extends React.Component{
     }
 
     render(){
+        const { t } = this.props;
+
         let results = this.state.results.map(result => (
             <Link className="searchbar-results_item"
                   to={'/profile/' + result.id}
@@ -74,7 +77,7 @@ class Searchbar extends React.Component{
                 <div className="searchbar" ref={this.container}>
                     <div className="searchbar-input_container">
                         <input type="text" className="input" value={this.state.value}
-                        placeholder="Search a user"
+                        placeholder={t("search a user")}
                         onFocus={() => this.showResults()}
                         onChange={e => this.getResults(e)}
                         />

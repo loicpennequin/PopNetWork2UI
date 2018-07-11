@@ -10,5 +10,6 @@
     "email": "Email",
     "password": "Password",
     "6 caractères minimum": "at least 6 characters",
-    "register": "Sign up"
+    "register": "Sign up",
+    "search a user": "search for an user"
 }

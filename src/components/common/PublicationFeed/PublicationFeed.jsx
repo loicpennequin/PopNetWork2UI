@@ -17,7 +17,7 @@ import PublicationForm      from './PublicationForm/PublicationForm.jsx';
 
 
 
-@translate()
+@translate(["common", "feed"])
 class PublicationFeed extends React.Component {
     constructor(props){
         super(props);
@@ -57,6 +57,8 @@ class PublicationFeed extends React.Component {
     }
 
     render() {
+        const { t } = this.props;
+
         const list = this.props.publications.map((p,i) => (
             <PublicationFeedItem publication={p} key={'publication' + i}/>
         ));
@@ -69,7 +71,7 @@ class PublicationFeed extends React.Component {
                         ? list
                         : <div className="no-publication">
                             <div className="txt-center"><i className="far fa-eye-slash fa-3x"></i></div>
-                            Cet utilisateur n'a pas encore de publication. revenez plus tard !
+                            {t('feed:no publication yet')}
                         </div>
                 }
 

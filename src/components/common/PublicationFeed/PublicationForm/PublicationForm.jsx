@@ -14,7 +14,7 @@ import Form                 from '../../Form/Form.jsx';
 import Avatar               from '../../Avatar/Avatar.jsx';
 
 @subscribe(store, s => ({ currentUser : s.currentUser }))
-@translate()
+@translate(["common", "feed"])
 class PublicationForm extends React.Component {
     constructor(props){
         super(props);
@@ -51,6 +51,7 @@ class PublicationForm extends React.Component {
     }
 
     render() {
+        const { t } = this.props;
         const inputStyle = {height: this.state.focused ? '6em' : '1.5em'};
         return (
             <div className="publication-form">
@@ -58,14 +59,14 @@ class PublicationForm extends React.Component {
                     <textarea className="publication-form_input"
                               value={this.state.body}
                               onChange={e => this.onChange(e)}
-                              placeholder={this.state.focused === true ? '' : 'Express yourself'}
+                              placeholder={this.state.focused === true ? '' : t('feed:Express yourself')}
                               onFocus={this.onFocus}
                               onBlur={this.onBlur}
                               style={inputStyle}></textarea>
                           <button className={`publication-form_submit
                                   button is-primary is-rounded
                                   ${this.state.body !== "" ? '' : 'is-disabled'}`}
-                                  onClick={this.publish}>Publier</button>
+                                  onClick={this.publish}>{t("feed:publier")}</button>
             </div>
         )
     }

@@ -10,5 +10,6 @@
     "email": "Adresse email",
     "password": "Mot de passe",
     "6 caractères minimum": "6 caractères minimum",
-    "register": "S'inscrire"
+    "register": "S'inscrire",
+    "search a user": "rechercher un utilisateur"
 }
